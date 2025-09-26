@@ -1,0 +1,61 @@
+fr:
+  app:
+    name: "Book Nest"
+  activerecord:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        email: "E-mail"
+        username: "Nom d'utilisateur"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        current_password: "Mot de passe actuel"
+        remember_me: "Se souvenir de moi"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "ne peut pas être vide"
+              invalid: "n'est pas un e-mail valide"
+            username:
+              blank: "ne peut pas être vide"
+              taken: "a déjà été pris"
+            password:
+              too_short: "est trop court (le minimum est de %{count} caractères)"
+            password_confirmation:
+              confirmation: "ne correspond pas au mot de passe"
+  devise:
+    sessions:
+      new:
+        title: "Se connecter"
+        submit: "Se connecter"
+    registrations:
+      new:
+        title: "S'inscrire"
+        password_hint: "(%{count} caractères minimum)"
+        submit: "S'inscrire"
+      edit:
+        title: "Modifier %{resource}"
+        waiting_confirmation: "En attente de confirmation pour : %{email}"
+        password_hint: "(laissez vide si vous ne souhaitez pas le changer)"
+        current_password_hint: "(nous avons besoin de votre mot de passe actuel pour confirmer vos changements)"
+        update: "Mettre à jour"
+        cancel_heading: "Supprimer mon compte"
+        unhappy: "Pas satisfait ?"
+        cancel_button: "Supprimer mon compte"
+        confirm: "Êtes-vous sûr ?"
+        back: "Retour"
+    passwords:
+      new:
+        title: "Mot de passe oublié ?"
+        submit: "Envoyez-moi les instructions de réinitialisation du mot de passe"
+    shared:
+      links:
+        login: "Se connecter"
+        signup: "S'inscrire"
+        forgot_password: "Mot de passe oublié ?"
+        no_confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
+        no_unlock: "Vous n'avez pas reçu les instructions de déverrouillage ?"
+        omniauth: "Se connecter avec %{provider}"

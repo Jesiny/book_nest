@@ -28,4 +28,63 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  app:
+    name: "Book Nest"
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        email: "Email"
+        username: "Username"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        current_password: "Current password"
+        remember_me: "Remember me"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "can't be blank"
+              invalid: "is not a valid email"
+            username:
+              blank: "can't be blank"
+              taken: "has already been taken"
+            password:
+              too_short: "is too short (minimum is %{count} characters)"
+            password_confirmation:
+              confirmation: "doesn't match Password"
+  devise:
+    sessions:
+      new:
+        title: "Log in"
+        submit: "Log in"
+    registrations:
+      new:
+        title: "Sign up"
+        password_hint: "(%{count} characters minimum)"
+        submit: "Sign up"
+      edit:
+        title: "Edit %{resource}"
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        password_hint: "(leave blank if you don't want to change it)"
+        current_password_hint: "(we need your current password to confirm your changes)"
+        update: "Update"
+        cancel_heading: "Cancel my account"
+        unhappy: "Unhappy?"
+        cancel_button: "Cancel my account"
+        confirm: "Are you sure?"
+        back: "Back"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        submit: "Send me reset password instructions"
+    shared:
+      links:
+        login: "Log in"
+        signup: "Sign up"
+        forgot_password: "Forgot your password?"
+        no_confirmation: "Didn't receive confirmation instructions?"
+        no_unlock: "Didn't receive unlock instructions?"
+        omniauth: "Sign in with %{provider}"
