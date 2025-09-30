@@ -30,14 +30,17 @@ fr:
     sessions:
       new:
         title: "Se connecter"
+        subtitle: "Bon retour sur Book Nest"
         submit: "Se connecter"
     registrations:
       new:
         title: "S'inscrire"
+        subtitle: "Rejoignez Book Nest et commencez votre voyage de lecture"
         password_hint: "(%{count} caractères minimum)"
         submit: "S'inscrire"
       edit:
         title: "Modifier %{resource}"
+        subtitle: "Mettez à jour vos informations de compte"
         waiting_confirmation: "En attente de confirmation pour : %{email}"
         password_hint: "(laissez vide si vous ne souhaitez pas le changer)"
         current_password_hint: "(nous avons besoin de votre mot de passe actuel pour confirmer vos changements)"
@@ -50,7 +53,22 @@ fr:
     passwords:
       new:
         title: "Mot de passe oublié ?"
-        submit: "Envoyez-moi les instructions de réinitialisation du mot de passe"
+        subtitle: "Entrez votre adresse e-mail et nous vous enverrons les instructions de réinitialisation"
+        submit: "Envoyer le lien"
+      edit:
+        title: "Changer votre mot de passe"
+        subtitle: "Entrez votre nouveau mot de passe ci-dessous"
+        submit: "Changer mon mot de passe"
+    confirmations:
+      new:
+        title: "Renvoyer les instructions de confirmation"
+        subtitle: "Entrez votre e-mail pour recevoir de nouvelles instructions de confirmation"
+        submit: "Renvoyer les instructions"
+    unlocks:
+      new:
+        title: "Renvoyer les instructions de déverrouillage"
+        subtitle: "Entrez votre e-mail pour recevoir les instructions de déverrouillage"
+        submit: "Renvoyer les instructions de déverrouillage"
     shared:
       links:
         login: "Se connecter"
