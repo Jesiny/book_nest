@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :username, presence: true, uniqueness: true
+
+  has_many :groups, dependent: :destroy
+  has_many :books, through: :groups
 end
