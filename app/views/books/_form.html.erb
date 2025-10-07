@@ -1,0 +1,73 @@
+<%= form_with(model: [group, book], class: "space-y-6") do |form| %>
+  <% if book.errors.any? %>
+    <div class="rounded-md bg-red-50 p-4">
+      <div class="text-sm text-red-700">
+        <ul class="list-disc list-inside">
+          <% book.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :title, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+  </div>
+
+  <div>
+    <%= form.label :resume, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :resume, rows: 5, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= form.label :status, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.select :status, Book.statuses.keys.map { |status| [t("activerecord.attributes.book.status.#{status}"), status] }, {}, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+    <div>
+      <%= form.label :rating, class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1 flex items-center gap-2">
+        <div class="flex items-center">
+          <% (0..5).step(0.5) do |value| %>
+            <label class="cursor-pointer">
+              <input type="radio" name="book[rating]" value="<%= value %>" <%= 'checked' if book.rating == value %> class="sr-only" />
+              <span class="text-2xl <%= book.rating && book.rating >= value ? 'text-yellow-400' : 'text-gray-300' %>">★</span>
+            </label>
+          <% end %>
+        </div>
+        <%= form.number_field :rating, step: 0.5, min: 0, max: 5, class: "ml-2 w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= form.label :date_started, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.date_field :date_started, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+    <div>
+      <%= form.label :date_finished, class: "block text-sm font-medium text-gray-700" %>
+      <%= form.date_field :date_finished, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    </div>
+  </div>
+
+  <div>
+    <%= form.label :review, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :review, rows: 6, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+  </div>
+
+  <div data-controller="image-preview">
+    <%= form.label :cover, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.file_field :cover, accept: "image/*", class: "mt-1 block w-full text-sm", data: { "image-preview-target": "input", action: "change->image-preview#preview" } %>
+    <img data-image-preview-target="preview" class="mt-3 hidden h-48 w-auto rounded border" alt="preview" />
+  </div>
+
+  <div class="flex items-center gap-3">
+    <%= form.submit t("common.save"), class: "inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700" %>
+    <%= link_to t("common.cancel"), group_path(group), class: "text-gray-600 hover:text-gray-900" %>
+  </div>
+<% end %>
+
+
