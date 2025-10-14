@@ -155,3 +155,10 @@ fr:
       sample_suggestion: "Ce livre était une lecture captivante qui m'a tenu en haleine du début à la fin. Les personnages étaient bien développés et l'intrigue avait plusieurs rebondissements inattendus. J'ai particulièrement apprécié le style d'écriture de l'auteur et la façon dont ils ont traité les thèmes. Je recommanderais ce livre à quiconque aime [genre]. Note : 4/5 étoiles."
     chat:
       sample_reply: "C'est un excellent choix ! %{title} est effectivement un merveilleux livre. Quels aspects avez-vous trouvés les plus intéressants ? Le développement des personnages, l'intrigue, ou peut-être le style d'écriture ?"
+  layouts:
+    nav:
+      top_nav:
+        open_user_menu: "Ouvrir le menu utilisateur"
+        sign_out: "Se déconnecter"
+        sign_in: "Se connecter"
+        confirm_sign_out: "Êtes-vous sûr ?"

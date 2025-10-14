@@ -184,3 +184,10 @@ en:
       sample_suggestion: "This book was an engaging read that kept me hooked from start to finish. The characters were well-developed and the plot had several unexpected twists. I particularly enjoyed the author's writing style and the way they handled the themes. I would recommend this book to anyone who enjoys [genre]. Rating: 4/5 stars."
     chat:
       sample_reply: "That's a great choice! %{title} is indeed a wonderful book. What aspects of it did you find most interesting? The character development, the plot, or perhaps the writing style?"
+  layouts:
+    nav:
+      top_nav:
+        open_user_menu: "Open user menu"
+        sign_out: "Sign out"
+        sign_in: "Sign in"
+        confirm_sign_out: "Are you sure?"
