@@ -64,3 +64,5 @@ gem "devise", "~> 4.9"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails", "~> 1.3"
+
+gem "cssbundling-rails", "~> 1.4"
