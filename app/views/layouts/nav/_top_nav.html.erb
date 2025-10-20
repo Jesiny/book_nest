@@ -1,9 +1,9 @@
-<nav class="fixed z-50 w-full bg-white border-b border-gray-200">
+<nav class="sticky z-50 w-full bg-white border-b border-gray-200">
   <div class="py-3 px-3 lg:px-5 lg:pl-3">
     <div class="flex justify-between items-center">
       <div class="flex justify-start items-center">
         <%= link_to dynamic_root_path, class: "flex items-center space-x-3" do %>
-          <%= image_tag('logo.png', class: 'h-8', alt: 'Logo') %>
+          <%= image_tag "logo.png", class: 'h-8', alt: 'Logo' %>
         <% end %>
       </div>
       <div class="flex items-center">
