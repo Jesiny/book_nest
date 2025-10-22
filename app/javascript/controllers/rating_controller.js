@@ -1,45 +1,72 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="rating"
 export default class extends Controller {
-  static targets = ["input"]
-  static values = { url: String }
+  static targets = ["input", "star", "display"];
+  static values = { url: String, readonly: Boolean };
 
   connect() {
-    // no-op
+    this.updateVisualState();
+    this.updateDisplay();
   }
 
-  stepNormalize(event) {
-    const input = this.hasInputTarget ? this.inputTarget : event.currentTarget
-    const value = parseFloat(input.value)
-    if (isNaN(value)) return
-    // Snap to nearest 0.5 within 0..5
-    let snapped = Math.round(value * 2) / 2
-    snapped = Math.max(0, Math.min(5, snapped))
-    if (snapped !== value) input.value = snapped
+  updateVisualState() {
+    const currentRating = this.getCurrentRating();
+
+    this.starTargets.forEach((star, index) => {
+      const starValue = index + 1;
+      const svg = star.querySelector("svg");
+      const path = svg.querySelector("path");
+      const isFull = currentRating >= starValue;
+      const isHalf = !isFull && currentRating >= starValue - 0.5;
+
+      svg.classList.toggle("text-yellow-400", isFull || isHalf);
+      svg.classList.toggle("text-gray-300", !isFull && !isHalf);
+
+      path.setAttribute(
+        "fill",
+        isFull
+          ? "currentColor"
+          : isHalf
+          ? `url(#half-star-gradient-${index})`
+          : "none"
+      );
+    });
   }
 
-  async save(event) {
-    if (!this.urlValue) return
-    const input = this.hasInputTarget ? this.inputTarget : event.currentTarget
-    const rating = input.value
-    try {
-      await fetch(this.urlValue, {
-        method: "PATCH",
-        headers: this._headers(),
-        body: JSON.stringify({ book: { rating } })
-      })
-    } catch (e) {
-      // silent fail
+  getCurrentRating() {
+    const value = this.hasInputTarget
+      ? this.inputTarget.value
+      : this.element.dataset.rating;
+
+    return parseFloat(value) || 0;
+  }
+
+  setRating(rating) {
+    if (this.hasInputTarget) {
+      this.inputTarget.value = rating;
+    }
+    this.updateVisualState();
+    this.updateDisplay();
+  }
+
+  updateDisplay() {
+    if (this.hasDisplayTarget) {
+      const rating = this.getCurrentRating();
+      this.displayTarget.textContent = `${rating}/5`;
     }
   }
 
-  _headers() {
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    return {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': token
-    }
+  handleStarClick(event) {
+    if (this.readonlyValue) return;
+
+    const star = event.currentTarget;
+    const value = this.starTargets.indexOf(star) + 1;
+    const { left, width } = star.getBoundingClientRect();
+
+    const isLeftHalf = event.clientX - left < width / 2;
+    const rating = value - (isLeftHalf ? 0.5 : 0);
+
+    this.setRating(rating);
   }
 }

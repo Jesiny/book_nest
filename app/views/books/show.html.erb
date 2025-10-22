@@ -32,15 +32,24 @@
         <div>
           <div class="text-sm text-gray-600"><%= t('.rating') %></div>
           <div class="mt-1 flex items-center gap-2">
-            <div class="flex items-center">
-              <% (0..5).step(0.5) do |value| %>
-                <label class="cursor-pointer">
-                  <input type="radio" name="rating" value="<%= value %>" <%= 'checked' if @book.rating == value %> class="sr-only" data-controller="rating" data-rating-url-value="<%= group_book_path(@group, @book) %>" data-action="change->rating#save" />
-                  <span class="text-2xl <%= @book.rating && @book.rating >= value ? 'text-yellow-400' : 'text-gray-300' %>">★</span>
-                </label>
-              <% end %>
+            <div data-controller="rating" data-rating-readonly-value="true" data-rating="<%= @book.rating || 0 %>">
+              <div class="flex items-center">
+                <% 5.times do |index| %>
+                  <div data-rating-target="star">
+                    <svg class="w-6 h-6 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <defs>
+                        <linearGradient id="half-star-gradient-<%= index %>" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="50%" style="stop-color:currentColor;stop-opacity:1" />
+                          <stop offset="50%" style="stop-color:transparent;stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <path stroke="currentColor" stroke-width="2" d="M11.083 5.104c.35-.8 1.485-.8 1.834 0l1.752 4.022a1 1 0 0 0 .84.597l4.463.342c.9.069 1.255 1.2.556 1.771l-3.33 2.723a1 1 0 0 0-.337 1.016l1.03 4.119c.214.858-.71 1.552-1.474 1.106l-3.913-2.281a1 1 0 0 0-1.008 0L7.583 20.8c-.764.446-1.688-.248-1.474-1.106l1.03-4.119A1 1 0 0 0 6.8 14.56l-3.33-2.723c-.698-.571-.342-1.702.557-1.771l4.462-.342a1 1 0 0 0 .84-.597l1.753-4.022Z"/>
+                    </svg>
+                  </div>
+                <% end %>
+              </div>
             </div>
-            <span class="text-sm text-gray-600"><%= @book.rating %>/5</span>
+            <span class="text-sm text-gray-600"><%= @book.rating || 0 %>/5</span>
           </div>
         </div>
         <div>
