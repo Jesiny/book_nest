@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   has_many :groups, dependent: :destroy
   has_many :books, through: :groups
+  has_one_attached :avatar
 end
