@@ -176,6 +176,8 @@ en:
       talk_with_ai: "Talk with AI about this book"
       chat_placeholder: "Ask about this book..."
       confirm_delete: "Delete this book?"
+    form:
+      cover_label: "Add a cover"
     notices:
       created: "Book was successfully created."
       updated: "Book was successfully updated."

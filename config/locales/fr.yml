@@ -147,6 +147,8 @@ fr:
       talk_with_ai: "Parler avec l'IA à propos de ce livre"
       chat_placeholder: "Posez une question sur ce livre..."
       confirm_delete: "Supprimer ce livre ?"
+    form:
+      cover_label: "Ajouter une couverture"
     notices:
       created: "Le livre a été créé avec succès."
       updated: "Le livre a été mis à jour avec succès."

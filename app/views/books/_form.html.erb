@@ -67,10 +67,23 @@
     <%= form.text_area :review, rows: 6, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
   </div>
 
-  <div data-controller="image-preview">
-    <%= form.label :cover, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.file_field :cover, accept: "image/*", class: "mt-1 block w-full text-sm", data: { "image-preview-target": "input", action: "change->image-preview#preview" } %>
-    <img data-image-preview-target="preview" class="mt-3 hidden h-48 w-auto rounded border" alt="preview" />
+  <div>
+    <%= form.label :cover, class: "block mb-2 text-sm font-medium text-gray-900" %>
+
+    <%= tag.div class: "flex items-center w-full", data: { controller: "image-preview", image_preview_thumb_classes_value: %w[w-36 h-36] } do %>
+      <%= form.label :cover, class: "flex flex-col", data: { image_preview_target: "label" } do %>
+        <% if @book.cover.attached? %>
+          <%= image_tag @book.cover,
+                        alt: @book.title,
+                        class: "w-36 h-36 rounded-lg object-cover" %>
+        <% else %>
+          <div class="border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+            <p class="p-6 font-semibold text-sm"><%= t '.cover_label' %></p>
+          </div>
+        <% end %>
+      <% end %>
+      <%= form.file_field :cover, class: "hidden", accept: ".png, .jpg, .jpeg", data: { image_preview_target: "file_field", action: "change->image-preview#preview" }%>
+    <% end %>
   </div>
 
   <div class="flex items-center gap-3">

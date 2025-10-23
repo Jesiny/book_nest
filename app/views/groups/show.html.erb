@@ -44,7 +44,7 @@
           <%= link_to [@group, book], class: "block" do %>
             <div class="aspect-[3/4] w-full bg-gray-100 rounded overflow-hidden">
               <% if book.cover.attached? %>
-                <%= image_tag book.cover.variant(resize_to_fill: [400, 533]).processed, alt: book.title, class: "w-full h-full object-cover" %>
+                <%= image_tag book.cover, alt: book.title, loading: "lazy",class: "w-full h-full object-cover" %>
               <% else %>
                 <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm"><%= t('.no_cover') %></div>
               <% end %>

@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   def create
     @book = @group.books.new(book_params)
     if @book.save
+      attach_cover
       redirect_to [ @group, @book ], notice: t("books.notices.created")
     else
       render :new, status: :unprocessable_entity
@@ -24,6 +25,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
+      attach_cover
       redirect_to [ @group, @book ], notice: t("books.notices.updated")
     else
       render :edit, status: :unprocessable_entity
@@ -47,6 +49,10 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def attach_cover
+    @book.cover.attach(book_params[:cover]) if book_params[:cover].present?
+  end
 
   def set_group
     @group = current_user.groups.find(params[:group_id])
