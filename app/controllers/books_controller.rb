@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group
-  before_action :set_book, only: [ :show, :edit, :update, :destroy, :assist_review, :chat ]
+  before_action :set_book, only: [ :show, :edit, :update, :destroy ]
 
   def show
   end
@@ -35,17 +35,6 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to group_path(@group), notice: t("books.notices.destroyed")
-  end
-
-  def assist_review
-    suggestion = t("books.assist_review.sample_suggestion")
-    render json: { suggestion: suggestion }
-  end
-
-  def chat
-    user_message = params[:message].to_s
-    reply = t("books.chat.sample_reply", title: @book.title)
-    render json: { reply: reply, echo: user_message }
   end
 
   private

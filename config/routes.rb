@@ -20,12 +20,7 @@ Rails.application.routes.draw do
     end
 
     resources :groups do
-      resources :books do
-        member do
-          post :assist_review
-          post :chat
-        end
-      end
+      resources :books
     end
   end
 end
