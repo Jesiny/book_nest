@@ -16,7 +16,10 @@
     </div>
     <div class="md:col-span-2">
       <div class="flex items-start justify-between">
-        <h1 class="text-2xl font-semibold"><%= @book.title %></h1>
+        <div>
+          <h1 class="text-2xl font-semibold"><%= @book.title %></h1>
+          <p class="text-lg text-gray-600 mt-1"><%= @book.author %></p>
+        </div>
         <div class="flex items-center gap-3">
           <%= link_to t("common.edit"), edit_group_book_path(@group, @book), class: "text-gray-600 hover:text-gray-900" %>
           <%= link_to t("common.delete"), group_book_path(@group, @book), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "text-red-600 hover:text-red-800" %>

@@ -42,6 +42,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_01_141258) do
   create_table "books", force: :cascade do |t|
     t.integer "group_id", null: false
     t.string "title", null: false
+    t.string "author", null: false
     t.text "resume"
     t.decimal "rating", precision: 2, scale: 1, default: "0.0", null: false
     t.string "status", default: "tbr", null: false

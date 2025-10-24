@@ -3,6 +3,7 @@ class CreateBooks < ActiveRecord::Migration[8.0]
     create_table :books do |t|
       t.references :group, null: false, foreign_key: true
       t.string :title, null: false
+      t.string :author, null: false
       t.text :resume
       t.decimal :rating, precision: 2, scale: 1, null: false, default: 0.0
       t.string :status, null: false, default: "tbr"

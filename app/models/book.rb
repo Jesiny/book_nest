@@ -10,7 +10,7 @@ class Book < ApplicationRecord
     dnf: "dnf"
   }, suffix: true
 
-  validates :title, presence: true
+  validates :title, :author, presence: true
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }, allow_nil: false
 
   validate :rating_in_half_steps
