@@ -193,3 +193,36 @@ en:
         sign_out: "Sign out"
         sign_in: "Sign in"
         confirm_sign_out: "Are you sure?"
+  date:
+    formats:
+      default: "%B %d, %Y" # October 24, 2025
+      short: "%b %d, %Y" # Oct 24, 2025
+      long: "%A, %B %d, %Y" # Friday, October 24, 2025
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names:
+      [
+        ~,
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December,
+      ]
+    abbr_month_names:
+      [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+
+  time:
+    formats:
+      default: "%B %d, %Y %H:%M" # October 24, 2025 15:45
+      short: "%b %d %H:%M" # Oct 24 15:45
+      long: "%A, %B %d, %Y at %H:%M" # Friday, October 24, 2025 at 15:45
