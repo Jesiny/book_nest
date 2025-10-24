@@ -27,11 +27,7 @@
         <div>
           <div class="text-sm text-gray-600"><%= t('.status') %></div>
           <div class="mt-1">
-            <select data-controller="status" data-status-url-value="<%= group_book_path(@group, @book) %>" data-action="change->status#change" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-              <% Book.statuses.keys.each do |status| %>
-                <option value="<%= status %>" <%= 'selected' if @book.status == status %>><%= t("activerecord.attributes.book.status.#{status}") %></option>
-              <% end %>
-            </select>
+            <%= t("activerecord.attributes.book.status_#{@book.status}").humanize %>
           </div>
         </div>
         <div>

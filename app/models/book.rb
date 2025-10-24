@@ -3,7 +3,12 @@ class Book < ApplicationRecord
 
   has_one_attached :cover
 
-  enum :status, %i[tbr reading finished dnf], suffix: true
+  enum :status, {
+    tbr: "tbr",
+    reading: "reading",
+    finished: "finished",
+    dnf: "dnf"
+  }, suffix: true
 
   validates :title, presence: true
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }, allow_nil: false

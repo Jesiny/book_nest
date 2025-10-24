@@ -12,6 +12,3 @@ application.register("image-preview", ImagePreviewController)
 
 import RatingController from "./rating_controller"
 application.register("rating", RatingController)
-
-import StatusController from "./status_controller"
-application.register("status", StatusController)
