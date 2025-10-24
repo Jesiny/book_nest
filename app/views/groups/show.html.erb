@@ -14,33 +14,9 @@
   </div>
 
   <% if @books.any? %>
-    <div data-controller="filters" class="mb-6">
-      <div class="flex flex-wrap gap-4 items-center">
-        <div class="flex-1 min-w-64">
-          <input type="text" data-filters-target="query" placeholder="<%= t('.search_placeholder') %>" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" data-action="input->filters#filter" />
-        </div>
-        <div>
-          <select data-filters-target="status" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" data-action="change->filters#filter">
-            <option value=""><%= t('.all_statuses') %></option>
-            <% Book.statuses.keys.each do |status| %>
-              <option value="<%= status %>"><%= t("activerecord.attributes.book.status.#{status}") %></option>
-            <% end %>
-          </select>
-        </div>
-        <div>
-          <select data-filters-target="rating" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" data-action="change->filters#filter">
-            <option value="0"><%= t('.any_rating') %></option>
-            <% [1, 2, 3, 4, 5].each do |rating| %>
-              <option value="<%= rating %>"><%= t('.min_rating', rating: rating) %></option>
-            <% end %>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div data-filters-target="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <% @books.each do |book| %>
-        <div data-filters-target="item" data-title="<%= book.title %>" data-status="<%= book.status %>" data-rating="<%= book.rating %>" class="rounded-lg border border-gray-200 p-4 bg-white shadow-sm">
+        <div class="rounded-lg border border-gray-200 p-4 bg-white shadow-sm">
           <%= link_to [@group, book], class: "block" do %>
             <div class="aspect-[3/4] w-full bg-gray-100 rounded overflow-hidden">
               <% if book.cover.attached? %>
