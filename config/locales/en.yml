@@ -33,6 +33,8 @@ en:
   activerecord:
     models:
       user: "User"
+      group: "Group"
+      book: "Book"
     attributes:
       user:
         email: "Email"
@@ -41,6 +43,22 @@ en:
         password_confirmation: "Password confirmation"
         current_password: "Current password"
         remember_me: "Remember me"
+      group:
+        name: "Name"
+        description: "Description"
+      book:
+        title: "Title"
+        resume: "Resume"
+        rating: "Rating"
+        status: "Status"
+        date_started: "Date started"
+        date_finished: "Date finished"
+        review: "Review"
+        cover: "Cover"
+        status_tbr: "TBR"
+        status_reading: "Reading"
+        status_finished: "Finished"
+        status_dnf: "DNF"
     errors:
       models:
         user:
@@ -106,3 +124,99 @@ en:
         no_confirmation: "Didn't receive confirmation instructions?"
         no_unlock: "Didn't receive unlock instructions?"
         omniauth: "Sign in with %{provider}"
+  common:
+    save: "Save"
+    cancel: "Cancel"
+    edit: "Edit"
+    delete: "Delete"
+    back: "Back"
+  groups:
+    index:
+      title: "Your Groups"
+      new_group: "New Group"
+      view: "View"
+      confirm_delete: "Delete this group?"
+      empty: "No groups yet."
+      create_first: "Create your first group"
+    new:
+      title: "New Group"
+    edit:
+      title: "Edit Group"
+    show:
+      add_book: "Add Book"
+      confirm_delete: "Delete this group?"
+      no_cover: "No cover"
+      rating: "Rating:"
+      empty: "No books in this group yet."
+      add_first: "Add your first book"
+      search_placeholder: "Search books..."
+      all_statuses: "All Statuses"
+      any_rating: "Any Rating"
+      min_rating: "%{rating}+ Stars"
+    notices:
+      created: "Group was successfully created."
+      updated: "Group was successfully updated."
+      destroyed: "Group was successfully deleted."
+  books:
+    new:
+      title: "New Book"
+    edit:
+      title: "Edit Book"
+    show:
+      no_cover: "No cover"
+      no_resume: "No resume available."
+      no_review: "No review yet."
+      help_write_review: "Help me write a review"
+      talk_with_ai: "Talk with AI about this book"
+      chat_placeholder: "Ask about this book..."
+      confirm_delete: "Delete this book?"
+    form:
+      cover_label: "Add a cover"
+    notices:
+      created: "Book was successfully created."
+      updated: "Book was successfully updated."
+      destroyed: "Book was successfully deleted."
+    assist_review:
+      sample_suggestion: "This book was an engaging read that kept me hooked from start to finish. The characters were well-developed and the plot had several unexpected twists. I particularly enjoyed the author's writing style and the way they handled the themes. I would recommend this book to anyone who enjoys [genre]. Rating: 4/5 stars."
+    chat:
+      sample_reply: "That's a great choice! %{title} is indeed a wonderful book. What aspects of it did you find most interesting? The character development, the plot, or perhaps the writing style?"
+  layouts:
+    nav:
+      top_nav:
+        open_user_menu: "Open user menu"
+        sign_out: "Sign out"
+        sign_in: "Sign in"
+        confirm_sign_out: "Are you sure?"
+  date:
+    formats:
+      default: "%B %d, %Y" # October 24, 2025
+      short: "%b %d, %Y" # Oct 24, 2025
+      long: "%A, %B %d, %Y" # Friday, October 24, 2025
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names:
+      [
+        ~,
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December,
+      ]
+    abbr_month_names:
+      [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+
+  time:
+    formats:
+      default: "%B %d, %Y %H:%M" # October 24, 2025 15:45
+      short: "%b %d %H:%M" # Oct 24 15:45
+      long: "%A, %B %d, %Y at %H:%M" # Friday, October 24, 2025 at 15:45

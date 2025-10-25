@@ -1,0 +1,91 @@
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="aspect-[3/4] w-full bg-gray-100 rounded overflow-hidden">
+        <% if @book.cover.attached? %>
+          <%= image_tag @book.cover,
+              alt: @book.title,
+              loading: "lazy",
+              class: "w-full h-full object-cover" %>
+        <% else %>
+          <div class="w-full h-full flex items-center justify-center text-gray-400 text-sm">
+            <%= t('.no_cover') %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="md:col-span-2">
+      <div class="flex items-start justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold"><%= @book.title %></h1>
+          <p class="text-lg text-gray-600 mt-1"><%= @book.author %></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= link_to t("common.edit"), edit_group_book_path(@group, @book), class: "text-gray-600 hover:text-gray-900" %>
+          <%= link_to t("common.delete"), group_book_path(@group, @book), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "text-red-600 hover:text-red-800" %>
+        </div>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.status') %></div>
+          <div class="mt-1">
+            <%= t("activerecord.attributes.book.status_#{@book.status}") %>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.rating') %></div>
+          <div class="mt-1 flex items-center gap-2">
+            <div data-controller="rating" data-rating-readonly-value="true" data-rating="<%= @book.rating || 0 %>">
+              <div class="flex items-center">
+                <% 5.times do |index| %>
+                  <div data-rating-target="star">
+                    <svg class="w-6 h-6 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <defs>
+                        <linearGradient id="half-star-gradient-<%= index %>" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="50%" style="stop-color:currentColor;stop-opacity:1" />
+                          <stop offset="50%" style="stop-color:transparent;stop-opacity:1" />
+                        </linearGradient>
+                      </defs>
+                      <path stroke="currentColor" stroke-width="2" d="M11.083 5.104c.35-.8 1.485-.8 1.834 0l1.752 4.022a1 1 0 0 0 .84.597l4.463.342c.9.069 1.255 1.2.556 1.771l-3.33 2.723a1 1 0 0 0-.337 1.016l1.03 4.119c.214.858-.71 1.552-1.474 1.106l-3.913-2.281a1 1 0 0 0-1.008 0L7.583 20.8c-.764.446-1.688-.248-1.474-1.106l1.03-4.119A1 1 0 0 0 6.8 14.56l-3.33-2.723c-.698-.571-.342-1.702.557-1.771l4.462-.342a1 1 0 0 0 .84-.597l1.753-4.022Z"/>
+                    </svg>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <span class="text-sm text-gray-600"><%= @book.rating || 0 %>/5</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.date_started') %></div>
+          <div class="mt-1 text-base"><%= @book.date_started ? l(@book.date_started) : '-' %></div>
+        </div>
+        <div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.date_finished') %></div>
+          <div class="mt-1 text-base"><%= @book.date_finished ? l(@book.date_finished) : '-' %></div>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.resume') %></div>
+        <p class="mt-1 text-gray-800 whitespace-pre-line"><%= @book.resume.presence || t('.no_resume') %></p>
+      </div>
+
+      <div class="mt-6">
+        <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.review') %></div>
+        <p class="mt-1 text-gray-800 whitespace-pre-line"><%= @book.review.presence || t('.no_review') %></p>
+      </div>
+
+      <div class="mt-4 flex items-center gap-3">
+        <button class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-800"type="button"><%= t('.help_write_review') %></button>
+        <button class="inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-white hover:bg-gray-700" data-action="click->chat#send" type="button"><%= t('.talk_with_ai') %></button>
+      </div>
+
+      <div class="mt-8">
+        <%= link_to t("common.back"), group_path(@group), class: "text-gray-600 hover:text-gray-900" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

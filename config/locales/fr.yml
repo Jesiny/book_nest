@@ -4,6 +4,8 @@ fr:
   activerecord:
     models:
       user: "Utilisateur"
+      group: "Groupe"
+      book: "Livre"
     attributes:
       user:
         email: "E-mail"
@@ -12,6 +14,22 @@ fr:
         password_confirmation: "Confirmation du mot de passe"
         current_password: "Mot de passe actuel"
         remember_me: "Se souvenir de moi"
+      group:
+        name: "Nom"
+        description: "Description"
+      book:
+        title: "Titre"
+        resume: "Résumé"
+        rating: "Note"
+        status: "Statut"
+        date_started: "Date de début"
+        date_finished: "Date de fin"
+        review: "Critique"
+        cover: "Couverture"
+        status_tbr: "PAL"
+        status_reading: "En cours"
+        status_finished: "Terminé"
+        status_dnf: "Abandonné"
     errors:
       models:
         user:
@@ -77,3 +95,110 @@ fr:
         no_confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
         no_unlock: "Vous n'avez pas reçu les instructions de déverrouillage ?"
         omniauth: "Se connecter avec %{provider}"
+  common:
+    save: "Enregistrer"
+    cancel: "Annuler"
+    edit: "Modifier"
+    delete: "Supprimer"
+    back: "Retour"
+  groups:
+    index:
+      title: "Vos Groupes"
+      new_group: "Nouveau Groupe"
+      view: "Voir"
+      confirm_delete: "Supprimer ce groupe ?"
+      empty: "Aucun groupe pour le moment."
+      create_first: "Créez votre premier groupe"
+    new:
+      title: "Nouveau Groupe"
+    edit:
+      title: "Modifier le Groupe"
+    show:
+      add_book: "Ajouter un livre"
+      confirm_delete: "Supprimer ce groupe ?"
+      no_cover: "Pas de couverture"
+      rating: "Note :"
+      empty: "Aucun livre dans ce groupe pour le moment."
+      add_first: "Ajoutez votre premier livre"
+      search_placeholder: "Rechercher des livres..."
+      all_statuses: "Tous les statuts"
+      any_rating: "Toute note"
+      min_rating: "%{rating}+ étoiles"
+    notices:
+      created: "Le groupe a été créé avec succès."
+      updated: "Le groupe a été mis à jour avec succès."
+      destroyed: "Le groupe a été supprimé avec succès."
+  books:
+    new:
+      title: "Nouveau livre"
+    edit:
+      title: "Modifier le livre"
+    show:
+      no_cover: "Pas de couverture"
+      no_resume: "Aucun résumé disponible."
+      no_review: "Aucune critique pour le moment."
+      help_write_review: "Aide-moi à écrire une critique"
+      talk_with_ai: "Parler avec l'IA à propos de ce livre"
+      chat_placeholder: "Posez une question sur ce livre..."
+      confirm_delete: "Supprimer ce livre ?"
+    form:
+      cover_label: "Ajouter une couverture"
+    notices:
+      created: "Le livre a été créé avec succès."
+      updated: "Le livre a été mis à jour avec succès."
+      destroyed: "Le livre a été supprimé avec succès."
+    assist_review:
+      sample_suggestion: "Ce livre était une lecture captivante qui m'a tenu en haleine du début à la fin. Les personnages étaient bien développés et l'intrigue avait plusieurs rebondissements inattendus. J'ai particulièrement apprécié le style d'écriture de l'auteur et la façon dont ils ont traité les thèmes. Je recommanderais ce livre à quiconque aime [genre]. Note : 4/5 étoiles."
+    chat:
+      sample_reply: "C'est un excellent choix ! %{title} est effectivement un merveilleux livre. Quels aspects avez-vous trouvés les plus intéressants ? Le développement des personnages, l'intrigue, ou peut-être le style d'écriture ?"
+  layouts:
+    nav:
+      top_nav:
+        open_user_menu: "Ouvrir le menu utilisateur"
+        sign_out: "Se déconnecter"
+        sign_in: "Se connecter"
+        confirm_sign_out: "Êtes-vous sûr ?"
+  date:
+    formats:
+      default: "%d %B %Y" # 24 octobre 2025
+      short: "%d %b" # 24 oct
+      long: "%A %d %B %Y" # vendredi 24 octobre 2025
+    day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
+    abbr_day_names: [dim., lun., mar., mer., jeu., ven., sam.]
+    month_names:
+      [
+        ~,
+        janvier,
+        février,
+        mars,
+        avril,
+        mai,
+        juin,
+        juillet,
+        août,
+        septembre,
+        octobre,
+        novembre,
+        décembre,
+      ]
+    abbr_month_names:
+      [
+        ~,
+        janv.,
+        févr.,
+        mars,
+        avr.,
+        mai,
+        juin,
+        juil.,
+        août,
+        sept.,
+        oct.,
+        nov.,
+        déc.,
+      ]
+  time:
+    formats:
+      default: "%d %B %Y %H:%M" # 24 octobre 2025 15:45
+      short: "%d %b %H:%M" # 24 oct. 15:45
+      long: "%A %d %B %Y à %H:%M" # vendredi 24 octobre 2025 à 15:45

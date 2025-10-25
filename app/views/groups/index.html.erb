@@ -1,0 +1,39 @@
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-semibold"><%= t('.title') %></h1>
+    <%= link_to t('.new_group'), new_group_path, class: "inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700" %>
+  </div>
+
+  <% if @groups.any? %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @groups.each do |group| %>
+        <div class="rounded-lg border border-gray-200 p-4 bg-white shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-medium text-gray-900"><%= group.name %></h2>
+              <% if group.description.present? %>
+                <p class="mt-1 text-sm text-gray-600"><%= group.description %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <%= link_to t('.view'), group_path(group), class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+            <div class="flex items-center gap-3 text-sm">
+              <%= link_to t("common.edit"), edit_group_path(group), class: "text-gray-600 hover:text-gray-900" %>
+              <%= link_to t("common.delete"), group_path(group), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: "text-red-600 hover:text-red-800" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-16 border border-dashed rounded-lg">
+      <p class="text-gray-600"><%= t('.empty') %></p>
+      <div class="mt-4">
+        <%= link_to t('.create_first'), new_group_path, class: "inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
