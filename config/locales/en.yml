@@ -163,12 +163,6 @@ en:
     edit:
       title: "Edit Book"
     show:
-      status: "Status"
-      rating: "Rating"
-      date_started: "Date started"
-      date_finished: "Date finished"
-      resume: "Resume"
-      review: "Review"
       no_cover: "No cover"
       no_resume: "No resume available."
       no_review: "No review yet."

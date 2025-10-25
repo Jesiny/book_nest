@@ -134,12 +134,6 @@ fr:
     edit:
       title: "Modifier le livre"
     show:
-      status: "Statut"
-      rating: "Note"
-      date_started: "Date de début"
-      date_finished: "Date de fin"
-      resume: "Résumé"
-      review: "Critique"
       no_cover: "Pas de couverture"
       no_resume: "Aucun résumé disponible."
       no_review: "Aucune critique pour le moment."

@@ -28,13 +28,13 @@
 
       <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <div class="text-sm text-gray-600"><%= t('.status') %></div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.status') %></div>
           <div class="mt-1">
-            <%= t("activerecord.attributes.book.status_#{@book.status}").humanize %>
+            <%= t("activerecord.attributes.book.status_#{@book.status}") %>
           </div>
         </div>
         <div>
-          <div class="text-sm text-gray-600"><%= t('.rating') %></div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.rating') %></div>
           <div class="mt-1 flex items-center gap-2">
             <div data-controller="rating" data-rating-readonly-value="true" data-rating="<%= @book.rating || 0 %>">
               <div class="flex items-center">
@@ -57,22 +57,22 @@
           </div>
         </div>
         <div>
-          <div class="text-sm text-gray-600"><%= t('.date_started') %></div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.date_started') %></div>
           <div class="mt-1 text-base"><%= @book.date_started ? l(@book.date_started) : '-' %></div>
         </div>
         <div>
-          <div class="text-sm text-gray-600"><%= t('.date_finished') %></div>
+          <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.date_finished') %></div>
           <div class="mt-1 text-base"><%= @book.date_finished ? l(@book.date_finished) : '-' %></div>
         </div>
       </div>
 
       <div class="mt-6">
-        <div class="text-sm text-gray-600"><%= t('.resume') %></div>
+        <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.resume') %></div>
         <p class="mt-1 text-gray-800 whitespace-pre-line"><%= @book.resume.presence || t('.no_resume') %></p>
       </div>
 
       <div class="mt-6">
-        <div class="text-sm text-gray-600"><%= t('.review') %></div>
+        <div class="text-sm text-gray-600"><%= t('activerecord.attributes.book.review') %></div>
         <p class="mt-1 text-gray-800 whitespace-pre-line"><%= @book.review.presence || t('.no_review') %></p>
       </div>
 
