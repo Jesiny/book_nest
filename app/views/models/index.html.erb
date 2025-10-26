@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, t('.title') %>
+
+<h1><%= t('.title') %></h1>
+
+<p>
+  <%= button_to t('.refresh_models'), refresh_models_path, method: :post %>
+</p>
+
+<div id="models">
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.provider') %></th>
+        <th><%= t('.model') %></th>
+        <th><%= t('.context_window') %></th>
+        <th><%= t('.pricing') %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @models %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to t("common.back"), chats_path %>

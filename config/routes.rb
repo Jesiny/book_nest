@@ -22,5 +22,14 @@ Rails.application.routes.draw do
     resources :groups do
       resources :books
     end
+
+    resources :chats do
+      resources :messages, only: [ :create ]
+    end
+    resources :models, only: [ :index, :show ] do
+      collection do
+        post :refresh
+      end
+  end
   end
 end

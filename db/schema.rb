@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_01_141258) do
+ActiveRecord::Schema[8.1].define(version: 2025_10_26_165052) do
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -40,40 +40,95 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_01_141258) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.string "title", null: false
     t.string "author", null: false
-    t.text "resume"
-    t.decimal "rating", precision: 2, scale: 1, default: "0.0", null: false
-    t.string "status", default: "tbr", null: false
-    t.date "date_started"
-    t.date "date_finished"
-    t.text "review"
     t.datetime "created_at", null: false
+    t.date "date_finished"
+    t.date "date_started"
+    t.integer "group_id", null: false
+    t.decimal "rating", precision: 2, scale: 1, default: "0.0", null: false
+    t.text "resume"
+    t.text "review"
+    t.string "status", default: "tbr", null: false
+    t.string "title", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_books_on_group_id"
     t.index ["status"], name: "index_books_on_status"
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "name", null: false
-    t.text "description"
+  create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.integer "model_id"
     t.datetime "updated_at", null: false
+    t.index ["model_id"], name: "index_chats_on_model_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["user_id", "name"], name: "index_groups_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "chat_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.integer "input_tokens"
+    t.integer "model_id"
+    t.integer "output_tokens"
+    t.string "role", null: false
+    t.integer "tool_call_id"
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["model_id"], name: "index_messages_on_model_id"
+    t.index ["role"], name: "index_messages_on_role"
+    t.index ["tool_call_id"], name: "index_messages_on_tool_call_id"
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.json "capabilities", default: []
+    t.integer "context_window"
+    t.datetime "created_at", null: false
+    t.string "family"
+    t.date "knowledge_cutoff"
+    t.integer "max_output_tokens"
+    t.json "metadata", default: {}
+    t.json "modalities", default: {}
+    t.datetime "model_created_at"
+    t.string "model_id", null: false
+    t.string "name", null: false
+    t.json "pricing", default: {}
+    t.string "provider", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family"], name: "index_models_on_family"
+    t.index ["provider", "model_id"], name: "index_models_on_provider_and_model_id", unique: true
+    t.index ["provider"], name: "index_models_on_provider"
+  end
+
+  create_table "tool_calls", force: :cascade do |t|
+    t.json "arguments", default: {}
+    t.datetime "created_at", null: false
+    t.integer "message_id", null: false
+    t.string "name", null: false
+    t.string "tool_call_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_tool_calls_on_message_id"
+    t.index ["name"], name: "index_tool_calls_on_name"
+    t.index ["tool_call_id"], name: "index_tool_calls_on_tool_call_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username", null: false
-    t.datetime "created_at", null: false
+    t.datetime "reset_password_sent_at"
+    t.string "reset_password_token"
     t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -82,5 +137,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_01_141258) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "groups"
+  add_foreign_key "chats", "models"
   add_foreign_key "groups", "users"
+  add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "models"
+  add_foreign_key "messages", "tool_calls"
+  add_foreign_key "tool_calls", "messages"
 end

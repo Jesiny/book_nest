@@ -1,0 +1,16 @@
+<div id="<%= dom_id chat %>">
+  <div>
+    <strong><%= t('activerecord.attributes.chat.model') %>:</strong>
+    <%= chat.model&.name || t('common.default') %>
+  </div>
+
+  <div>
+    <strong><%= t('activerecord.models.message') %>:</strong>
+    <%= chat.messages.count %>
+  </div>
+
+  <div>
+    <strong><%= t('common.created') %>:</strong>
+    <%= chat.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+  </div>
+</div>

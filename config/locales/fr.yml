@@ -6,6 +6,9 @@ fr:
       user: "Utilisateur"
       group: "Groupe"
       book: "Livre"
+      chat: "Chat"
+      message: "Message"
+      model: "Modèle"
     attributes:
       user:
         email: "E-mail"
@@ -30,6 +33,18 @@ fr:
         status_reading: "En cours"
         status_finished: "Terminé"
         status_dnf: "Abandonné"
+      chat:
+        model: "Modèle"
+        prompt: "Invite"
+      message:
+        content: "Contenu"
+        role: "Rôle"
+      model:
+        name: "Nom"
+        provider: "Fournisseur"
+        context_window: "Fenêtre de contexte"
+        max_output_tokens: "Tokens de sortie max"
+        capabilities: "Capacités"
     errors:
       models:
         user:
@@ -101,6 +116,8 @@ fr:
     edit: "Modifier"
     delete: "Supprimer"
     back: "Retour"
+    created: "Créé"
+    default: "Par défaut"
   groups:
     index:
       title: "Vos Groupes"
@@ -151,6 +168,60 @@ fr:
       sample_suggestion: "Ce livre était une lecture captivante qui m'a tenu en haleine du début à la fin. Les personnages étaient bien développés et l'intrigue avait plusieurs rebondissements inattendus. J'ai particulièrement apprécié le style d'écriture de l'auteur et la façon dont ils ont traité les thèmes. Je recommanderais ce livre à quiconque aime [genre]. Note : 4/5 étoiles."
     chat:
       sample_reply: "C'est un excellent choix ! %{title} est effectivement un merveilleux livre. Quels aspects avez-vous trouvés les plus intéressants ? Le développement des personnages, l'intrigue, ou peut-être le style d'écriture ?"
+  chats:
+    index:
+      title: "Chats"
+      show_chat: "Voir ce chat"
+      new_chat: "Nouveau chat"
+    new:
+      title: "Nouveau chat"
+    show:
+      title: "Chat"
+      using_model: "Utilisation de"
+    form:
+      select_model: "Sélectionner le modèle IA :"
+      default_model: "Par défaut (%{model})"
+      prompt_placeholder: "De quoi aimeriez-vous discuter ?"
+      start_chat: "Commencer un nouveau chat"
+    notices:
+      created: "Le chat a été créé avec succès."
+      updated: "Le chat a été mis à jour avec succès."
+      destroyed: "Le chat a été supprimé avec succès."
+  messages:
+    form:
+      message_placeholder: "Message..."
+      send_message: "Envoyer le message"
+    message:
+      user: "Utilisateur"
+      assistant: "Assistant"
+      system: "Système"
+      tool: "Outil"
+    notices:
+      created: "Le message a été créé avec succès."
+      updated: "Le message a été mis à jour avec succès."
+      destroyed: "Le message a été supprimé avec succès."
+  models:
+    index:
+      title: "Modèles"
+      refresh_models: "Actualiser les modèles"
+      provider: "Fournisseur"
+      model: "Modèle"
+      context_window: "Fenêtre de contexte"
+      pricing: "$/1M tokens (Entrée/Sortie)"
+      show: "Voir"
+      start_chat: "Commencer un chat"
+    show:
+      id: "ID"
+      provider: "Fournisseur"
+      context_window: "Fenêtre de contexte"
+      max_output: "Sortie max"
+      capabilities: "Capacités"
+      start_chat_with_model: "Commencer un chat avec ce modèle"
+      all_models: "Tous les modèles"
+    notices:
+      created: "Le modèle a été créé avec succès."
+      updated: "Le modèle a été mis à jour avec succès."
+      destroyed: "Le modèle a été supprimé avec succès."
   layouts:
     nav:
       top_nav:
