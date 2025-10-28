@@ -77,8 +77,9 @@
       </div>
 
       <div class="mt-4 flex items-center gap-3">
-        <button class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-800"type="button"><%= t('.help_write_review') %></button>
-        <button class="inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-white hover:bg-gray-700" data-action="click->chat#send" type="button"><%= t('.talk_with_ai') %></button>
+        <%= link_to t('.talk_with_ai'),
+            group_book_chat_path(@group, @book),
+            class: "inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-white hover:bg-gray-700" %>
       </div>
 
       <div class="mt-8">

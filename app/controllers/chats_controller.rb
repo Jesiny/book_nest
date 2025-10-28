@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_group, only: [ :show ]
+  before_action :set_book, only: [ :show ]
   before_action :set_chat, only: [ :show ]
 
   def index
@@ -26,8 +28,16 @@ class ChatsController < ApplicationController
 
   private
 
+  def set_group
+    @group = current_user.groups.find(params[:group_id])
+  end
+
+  def set_book
+    @book = @group.books.find(params[:book_id])
+  end
+
   def set_chat
-    @chat = Chat.find(params[:id])
+    @chat = @book.chat
   end
 
   def model

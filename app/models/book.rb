@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   belongs_to :group
 
   has_one_attached :cover
+  has_one :chat, as: :subject, dependent: :destroy
 
   enum :status, {
     tbr: "tbr",
@@ -16,6 +17,8 @@ class Book < ApplicationRecord
   validate :rating_in_half_steps
   validate :finished_after_started
 
+  after_create :initialize_ai_chat
+
   private
 
   def rating_in_half_steps
@@ -29,5 +32,15 @@ class Book < ApplicationRecord
     if date_finished < date_started
       errors.add(:date_finished, :after_or_equal_to_start)
     end
+  end
+
+  def initialize_ai_chat
+    instructions = BookChatPrompt.build(id)
+    chat = Chat.create!(
+      model: RubyLLM.config.default_model,
+      subject: self
+    )
+
+    chat.with_instructions(instructions)
   end
 end
