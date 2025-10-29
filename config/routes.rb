@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
     resources :groups do
       resources :books do
-        resource :chat, only: [ :show ]
+        resource :chat, only: [ :show ] do
+          resources :messages, only: [ :create ]
+        end
       end
     end
   end

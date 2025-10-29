@@ -176,7 +176,6 @@ fr:
     new:
       title: "Nouveau chat"
     show:
-      title: "Chat"
       using_model: "Utilisation de"
     form:
       select_model: "Sélectionner le modèle IA :"

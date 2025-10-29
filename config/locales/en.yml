@@ -205,7 +205,6 @@ en:
     new:
       title: "New chat"
     show:
-      title: "Chat"
       using_model: "Using"
     form:
       select_model: "Select AI model:"
