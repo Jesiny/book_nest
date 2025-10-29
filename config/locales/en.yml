@@ -206,6 +206,9 @@ en:
       title: "New chat"
     show:
       using_model: "Using"
+      title: "%{title}: AI chat"
+      no_messages: "No messages yet"
+      start_conversation: "Start a conversation by sending your first message below."
     form:
       select_model: "Select AI model:"
       default_model: "Default (%{model})"
@@ -219,11 +222,14 @@ en:
     form:
       message_placeholder: "Message..."
       send_message: "Send message"
+      sending: "Sending..."
     message:
       user: "User"
       assistant: "Assistant"
       system: "System"
       tool: "Tool"
+    tool_calls:
+      title: "Tool Call"
     notices:
       created: "Message was successfully created."
       updated: "Message was successfully updated."

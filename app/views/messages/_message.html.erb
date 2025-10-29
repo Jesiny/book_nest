@@ -25,7 +25,7 @@
             <%= t(".message.#{message.role}") %>
           </span>
           <span class="text-xs text-gray-400">
-            <%= message.created_at&.strftime("%I:%M %p") %>
+            <%= message.created_at ? l(message.created_at, format: :short) : '' %>
           </span>
         </div>
         

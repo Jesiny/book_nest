@@ -11,6 +11,6 @@
 
   <div>
     <strong><%= t('common.created') %>:</strong>
-    <%= chat.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+    <%= l(chat.created_at, format: :long) %>
   </div>
 </div>

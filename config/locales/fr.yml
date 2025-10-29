@@ -177,6 +177,9 @@ fr:
       title: "Nouveau chat"
     show:
       using_model: "Utilisation de"
+      title: "%{title} : Chat IA"
+      no_messages: "Aucun message pour le moment"
+      start_conversation: "Commencez une conversation en envoyant votre premier message ci-dessous."
     form:
       select_model: "Sélectionner le modèle IA :"
       default_model: "Par défaut (%{model})"
@@ -190,11 +193,14 @@ fr:
     form:
       message_placeholder: "Message..."
       send_message: "Envoyer le message"
+      sending: "Envoi..."
     message:
       user: "Utilisateur"
       assistant: "Assistant"
       system: "Système"
       tool: "Outil"
+    tool_calls:
+      title: "Appel d'outil"
     notices:
       created: "Le message a été créé avec succès."
       updated: "Le message a été mis à jour avec succès."
