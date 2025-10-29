@@ -15,8 +15,10 @@ Rails.application.routes.draw do
       root to: "groups#index", as: :authenticated_root
     end
 
-    unauthenticated do
-      root to: "devise/sessions#new", as: :unauthenticated_root
+    devise_scope :user do
+      unauthenticated do
+        root to: "devise/sessions#new", as: :unauthenticated_root
+      end
     end
 
     resources :groups do
