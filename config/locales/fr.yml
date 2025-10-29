@@ -227,6 +227,7 @@ fr:
       created: "Le modèle a été créé avec succès."
       updated: "Le modèle a été mis à jour avec succès."
       destroyed: "Le modèle a été supprimé avec succès."
+      refreshed: "Les modèles ont été actualisés avec succès"
   layouts:
     nav:
       top_nav:

@@ -256,6 +256,7 @@ en:
       created: "Model was successfully created."
       updated: "Model was successfully updated."
       destroyed: "Model was successfully deleted."
+      refreshed: "Models refreshed successfully"
   layouts:
     nav:
       top_nav:
