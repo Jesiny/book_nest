@@ -35,6 +35,9 @@ en:
       user: "User"
       group: "Group"
       book: "Book"
+      chat: "Chat"
+      message: "Message"
+      model: "Model"
     attributes:
       user:
         email: "Email"
@@ -59,6 +62,18 @@ en:
         status_reading: "Reading"
         status_finished: "Finished"
         status_dnf: "DNF"
+      chat:
+        model: "Model"
+        prompt: "Prompt"
+      message:
+        content: "Content"
+        role: "Role"
+      model:
+        name: "Name"
+        provider: "Provider"
+        context_window: "Context Window"
+        max_output_tokens: "Max Output Tokens"
+        capabilities: "Capabilities"
     errors:
       models:
         user:
@@ -130,6 +145,8 @@ en:
     edit: "Edit"
     delete: "Delete"
     back: "Back"
+    created: "Created"
+    default: "Default"
   groups:
     index:
       title: "Your Groups"
@@ -180,6 +197,66 @@ en:
       sample_suggestion: "This book was an engaging read that kept me hooked from start to finish. The characters were well-developed and the plot had several unexpected twists. I particularly enjoyed the author's writing style and the way they handled the themes. I would recommend this book to anyone who enjoys [genre]. Rating: 4/5 stars."
     chat:
       sample_reply: "That's a great choice! %{title} is indeed a wonderful book. What aspects of it did you find most interesting? The character development, the plot, or perhaps the writing style?"
+  chats:
+    index:
+      title: "Chats"
+      show_chat: "Show this chat"
+      new_chat: "New chat"
+    new:
+      title: "New chat"
+    show:
+      using_model: "Using"
+      title: "%{title}: AI chat"
+      no_messages: "No messages yet"
+      start_conversation: "Start a conversation by sending your first message below."
+    form:
+      select_model: "Select AI model:"
+      default_model: "Default (%{model})"
+      prompt_placeholder: "What would you like to discuss?"
+      start_chat: "Start new chat"
+    notices:
+      created: "Chat was successfully created."
+      updated: "Chat was successfully updated."
+      destroyed: "Chat was successfully deleted."
+  messages:
+    form:
+      message_placeholder: "Message..."
+      send_message: "Send message"
+      sending: "Sending..."
+    message:
+      user: "User"
+      assistant: "Assistant"
+      system: "System"
+      tool: "Tool"
+    tool_calls:
+      title: "Tool Call"
+    notices:
+      created: "Message was successfully created."
+      updated: "Message was successfully updated."
+      destroyed: "Message was successfully deleted."
+  models:
+    index:
+      title: "Models"
+      refresh_models: "Refresh Models"
+      provider: "Provider"
+      model: "Model"
+      context_window: "Context Window"
+      pricing: "$/1M tokens (In/Out)"
+      show: "Show"
+      start_chat: "Start chat"
+    show:
+      id: "ID"
+      provider: "Provider"
+      context_window: "Context Window"
+      max_output: "Max Output"
+      capabilities: "Capabilities"
+      start_chat_with_model: "Start chat with this model"
+      all_models: "All models"
+    notices:
+      created: "Model was successfully created."
+      updated: "Model was successfully updated."
+      destroyed: "Model was successfully deleted."
+      refreshed: "Models refreshed successfully"
   layouts:
     nav:
       top_nav:

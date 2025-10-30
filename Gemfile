@@ -52,6 +52,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "dotenv", "~> 3.1"
 end
 
 group :test do
@@ -68,3 +69,6 @@ gem "jsbundling-rails", "~> 1.3"
 gem "cssbundling-rails", "~> 1.4"
 
 gem "image_processing", "~> 1.14"
+
+# Build chatbots, AI agents, RAG applications https://github.com/crmne/ruby_llm
+gem "ruby_llm", "~> 1.8"

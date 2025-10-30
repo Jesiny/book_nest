@@ -15,12 +15,18 @@ Rails.application.routes.draw do
       root to: "groups#index", as: :authenticated_root
     end
 
-    unauthenticated do
-      root to: "devise/sessions#new", as: :unauthenticated_root
+    devise_scope :user do
+      unauthenticated do
+        root to: "devise/sessions#new", as: :unauthenticated_root
+      end
     end
 
     resources :groups do
-      resources :books
+      resources :books do
+        resource :chat, only: [ :show ] do
+          resources :messages, only: [ :create ]
+        end
+      end
     end
   end
 end

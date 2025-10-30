@@ -1,0 +1,41 @@
+<div id="message_<%= message.id %>" class="message flex <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
+  <div class="max-w-xs lg:max-w-md xl:max-w-lg">
+    <div class="flex items-start space-x-3 <%= message.role == 'user' ? 'flex-row-reverse space-x-reverse' : '' %>">
+      <!-- Avatar -->
+      <div class="flex-shrink-0">
+        <% if message.role == 'user' %>
+          <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        <% else %>
+          <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        <% end %>
+      </div>
+      
+      <!-- Message Content -->
+      <div class="flex-1">
+        <div class="flex items-center space-x-2 mb-1 <%= message.role == 'user' ? 'justify-end' : 'justify-start' %>">
+          <span class="text-xs font-medium text-gray-500">
+            <%= t(".message.#{message.role}") %>
+          </span>
+          <span class="text-xs text-gray-400">
+            <%= message.created_at ? l(message.created_at, format: :short) : '' %>
+          </span>
+        </div>
+        
+        <div class="px-4 py-2 rounded-lg <%= message.role == 'user' ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-900' %>">
+          <div id="message_<%= message.id %>_content" class="text-sm whitespace-pre-wrap break-words"><%= message.content %></div>
+          <% if message.tool_call? %>
+            <%= render "messages/tool_calls", message: message %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
