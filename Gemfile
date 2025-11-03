@@ -53,6 +53,9 @@ group :development, :test do
 
   # https://github.com/thoughtbot/factory_bot_rails
   gem 'factory_bot_rails'
+
+  # https://github.com/faker-ruby/faker
+  gem "faker"
 end
 
 group :development do
