@@ -1,0 +1,102 @@
+project_type: ruby_on_rails
+
+rules:
+  - name: "Project context"
+    content: |
+    The project is called **BookNest**, a Ruby on Rails web application for organizing reading lists.
+    Users can create groups of books, add books with details (title, author, cover, resume, review, rating),
+    and interact with an AI chat about each book.
+
+    The stack includes:
+      - Ruby on Rails 8.x
+      - Devise for authentication
+      - Tailwind CSS + Flowbite for UI
+      - jsbundling-rails (esbuild) + stimulus for frontend JS
+      - Active Storage for file uploads (book covers)
+      - Ruby LLM for AI chat interactions
+      - i18n translations enabled
+      - RSpec for testing
+
+  - name: "Testing setup"
+    content: |
+    Use **RSpec 8.x** as the testing framework.
+    Required gems: rspec-rails, factory_bot_rails, and faker.
+
+    Test organization:
+      - spec/models      → model tests (validations, associations, scopes)
+      - spec/requests    → request/controller tests (CRUD endpoints)
+      - spec/system      → system/integration tests with Capybara
+      - spec/services    → service class tests (e.g., BookChatPrompt)
+      - spec/jobs        → background job tests (e.g., ChatResponseJob)
+      - spec/factories   → FactoryBot definitions
+
+    Configure support files:
+      - spec/support/factory_bot.rb → includes FactoryBot syntax methods
+      - spec/support/devise.rb → includes Devise test helpers
+      Ensure `rails_helper.rb` loads `spec/support/**/*.rb`.
+
+    Preferred RSpec style:
+      - Use `describe`, `context`, and `it` blocks
+      - Use `expect(...).to` syntax (no deprecated `should`)
+      - Use `FactoryBot.create` / `build`
+      - Use `let` and `before` hooks appropriately
+      - Keep test names descriptive but concise
+
+  - name: "Code style"
+    content: |
+      Follow idiomatic Ruby and Rails best practices.
+        - Use single quotes unless interpolation is required.
+        - Keep line length ≤ 100 characters.
+        - Use early returns instead of nested conditionals.
+        - Keep test files small and focused.
+        - Comment complex test setups when needed.
+
+  - name: "FactoryBot setup"
+    content: |
+      Factories live in `spec/factories`.
+      Each model has its own factory file:
+        - user.rb
+        - group.rb
+        - book.rb
+        - chat.rb
+        - message.rb
+      Use Faker to generate realistic random data.
+      Example:
+        title { Faker::Book.title }
+        author { Faker::Book.author }
+        association :group
+
+  - name: "Faker usage"
+    content: |
+      Faker is used inside factories and occasionally inside tests
+      to generate random but realistic data.
+      Default locale: 'en'.
+      No global configuration file is required unless you need reproducible
+      data (Faker::Config.random = Random.new(42)).
+
+  - name: "RSpec generation rule"
+    content: |
+      When generating new specs, follow these naming and structure conventions:
+        - spec/models/book_spec.rb
+        - spec/requests/books_spec.rb
+        - spec/system/user_adds_book_spec.rb
+        - spec/services/book_chat_prompt_spec.rb
+      Each spec should start with a `require "rails_helper"` line.
+      Use explicit examples for validations, associations, and edge cases.
+      For request specs, test both successful and failing requests.
+
+  - name: "AI context awareness"
+    content: |
+      The app includes AI chat features using Ruby LLM.
+      Related components:
+        - BookChatPrompt service builds the chat prompt.
+        - ChatResponseJob processes AI responses asynchronously.
+      When generating or testing these parts, ensure:
+        - Proper associations with Book and Chat.
+        - Model validations and background jobs are covered in tests.
+
+  - name: "Language and docs"
+    content: |
+    Default code and test language: English.
+    Comments and commit messages can be in English or French.
+    Keep generated RSpec descriptions clear, behavior-oriented, and concise.
