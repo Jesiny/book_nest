@@ -50,6 +50,9 @@ group :development, :test do
 
   # https://github.com/rspec/rspec-rails/tree/8-0-maintenance
   gem "rspec-rails", "~> 8.0.0"
+
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails'
 end
 
 group :development do
