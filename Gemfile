@@ -52,10 +52,13 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
 
   # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
 
   # https://github.com/faker-ruby/faker
   gem "faker"
+
+  # https://github.com/thoughtbot/shoulda-matchers
+  gem "shoulda-matchers"
 end
 
 group :development do
