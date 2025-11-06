@@ -86,4 +86,4 @@ gem "cssbundling-rails", "~> 1.4"
 gem "image_processing", "~> 1.14"
 
 # Build chatbots, AI agents, RAG applications https://github.com/crmne/ruby_llm
-gem "ruby_llm", "~> 1.8"
+gem "ruby_llm", "~> 1.9"
