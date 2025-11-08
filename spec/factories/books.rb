@@ -1,6 +1,13 @@
 FactoryBot.define do
   factory :book do
-    association :group
+    transient do
+      user { nil }
+    end
+
+    after(:build) do |book, evaluator|
+      book.group ||= build(:group, user: evaluator.user || build(:user))
+    end
+
     title { Faker::Book.title }
     author { Faker::Book.author }
     resume { nil }
