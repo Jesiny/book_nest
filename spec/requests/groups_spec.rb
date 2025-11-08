@@ -120,6 +120,7 @@ RSpec.describe "Groups", type: :request do
     it "returns http success" do
       get edit_group_path(id: group)
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("value=\"#{group.name}\"")
     end
 
     it "prevents access to other user's group" do
