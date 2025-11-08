@@ -1,14 +1,16 @@
 require "rails_helper"
 
 RSpec.describe Chat, type: :model do
+  before do
+    allow(BookChatPrompt).to receive(:build).and_return("instructions")
+    allow(RubyLLM.config).to receive(:default_model).and_return(build(:model))
+    allow_any_instance_of(Chat).to receive(:with_instructions)
+  end
+
   describe "associations" do
     it { is_expected.to belong_to(:subject).optional(false) }
 
     it "belongs to polymorphic subject" do
-      allow(BookChatPrompt).to receive(:build).and_return("instructions")
-      allow(RubyLLM.config).to receive(:default_model).and_return(build(:model))
-      allow_any_instance_of(Chat).to receive(:with_instructions)
-
       chat = build(:chat)
       book = chat.subject
       chat.save!
@@ -21,10 +23,6 @@ RSpec.describe Chat, type: :model do
 
   describe "acts_as_chat" do
     it "has many messages" do
-      allow(BookChatPrompt).to receive(:build).and_return("instructions")
-      allow(RubyLLM.config).to receive(:default_model).and_return(build(:model))
-      allow_any_instance_of(Chat).to receive(:with_instructions)
-
       chat = create(:chat)
       messages = create_list(:message, 2, chat: chat)
 
