@@ -142,8 +142,8 @@ RSpec.describe "Groups", type: :request do
       it "updates the group" do
         patch group_path(id: group), params: valid_params
         group.reload
-        expect(group.name).to eq(valid_params[:group][:name])
-        expect(group.description).to eq(valid_params[:group][:description])
+
+        expect(group).to have_attributes(valid_params[:group])
       end
 
       it "redirects to the group" do
@@ -158,8 +158,6 @@ RSpec.describe "Groups", type: :request do
       end
 
       it "does not update the group" do
-        patch group_path(id: group), params: invalid_params
-
         expect {
           patch group_path(id: group), params: invalid_params
         }.not_to change { group.reload }
