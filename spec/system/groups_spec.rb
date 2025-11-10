@@ -14,13 +14,13 @@ RSpec.describe "Group management", type: :system do
       it "allows user to create a new group" do
         visit groups_path
 
-        click_on "New Group"
+        click_on I18n.t("groups.index.new_group")
         expect(page).to have_current_path(new_group_path(locale: I18n.locale))
 
         fill_in "Name", with: group.name
         fill_in "Description", with: group.description
 
-        click_on "Save"
+        click_on I18n.t("common.save")
 
         expect(page).to have_content(group.name)
         expect(page).to have_content(group.description)
@@ -33,7 +33,7 @@ RSpec.describe "Group management", type: :system do
       visit new_group_path
 
       fill_in "Name", with: ""
-      click_on "Save"
+      click_on I18n.t("common.save")
 
       expect(Group.count).to eq(0)
       expect(page).to have_current_path(new_group_path)
@@ -67,13 +67,13 @@ RSpec.describe "Group management", type: :system do
     it "allows user to edit group" do
       visit group_path(id: group)
 
-      click_on "Edit"
+      click_on I18n.t("common.edit")
       expect(page).to have_current_path(edit_group_path(locale: I18n.locale, id: group))
 
       fill_in "Name", with: updated_group.name
       fill_in "Description", with: updated_group.description
 
-      click_on "Save"
+      click_on I18n.t("common.save")
 
       expect(page).to have_content(updated_group.name)
       expect(page).to have_content(updated_group.description)
@@ -88,7 +88,7 @@ RSpec.describe "Group management", type: :system do
 
       expect(page).to have_content("Delete")
 
-      click_on "Delete"
+      click_on I18n.t("common.delete")
       page.accept_alert if page.driver.browser.respond_to?(:switch_to)
 
       expect(page).not_to have_content("Delete")
