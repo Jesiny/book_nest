@@ -10,12 +10,12 @@ FactoryBot.define do
 
     title { Faker::Book.title }
     author { Faker::Book.author }
-    resume { nil }
-    rating { 0.0 }
+    resume { Faker::Lorem.paragraph }
+    rating { [ 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0 ].sample }
     status { :tbr }
     date_started { nil }
     date_finished { nil }
-    review { nil }
+    review { Faker::Lorem.paragraph }
 
     trait :reading do
       status { :reading }
