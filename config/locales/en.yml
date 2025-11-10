@@ -88,6 +88,10 @@ en:
               too_short: "is too short (minimum is %{count} characters)"
             password_confirmation:
               confirmation: "doesn't match Password"
+        book:
+          attributes:
+            date_finished:
+              after_or_equal_to_start: "must be after or equal to date started"
   devise:
     sessions:
       new:

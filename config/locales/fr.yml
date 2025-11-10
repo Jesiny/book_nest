@@ -59,6 +59,10 @@ fr:
               too_short: "est trop court (le minimum est de %{count} caractères)"
             password_confirmation:
               confirmation: "ne correspond pas au mot de passe"
+        book:
+          attributes:
+            date_finished:
+              after_or_equal_to_start: "doit être après ou égal à la date de début"
   devise:
     sessions:
       new:
