@@ -47,6 +47,18 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # https://github.com/rspec/rspec-rails/tree/8-0-maintenance
+  gem "rspec-rails", "~> 8.0.0"
+
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem "factory_bot_rails"
+
+  # https://github.com/faker-ruby/faker
+  gem "faker"
+
+  # https://github.com/thoughtbot/shoulda-matchers
+  gem "shoulda-matchers"
 end
 
 group :development do
@@ -59,6 +71,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  # https://github.com/rails/rails-controller-testing
+  gem "rails-controller-testing"
 end
 
 gem "devise", "~> 4.9"
