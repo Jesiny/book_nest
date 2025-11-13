@@ -51,9 +51,9 @@ RSpec.describe "Groups", type: :request do
       get group_path(id: group)
 
       books.each do |book|
-        expect(response.body).to include("#{book.title}</h3>")
+        expect(response.body).to include("#{ERB::Util.html_escape(book.title)}</h3>")
       end
-      expect(response.body).not_to include("#{other_group_book.title}</h3>")
+      expect(response.body).not_to include("#{ERB::Util.html_escape(other_group_book.title)}</h3>")
     end
 
     it "prevents access to other user's group" do

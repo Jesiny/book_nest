@@ -125,21 +125,50 @@ fr:
   groups:
     index:
       title: "Vos Groupes"
+      subtitle: "Organisez vos livres par genre, humeur ou objectifs de lecture"
       new_group: "Nouveau Groupe"
+      count_books:
+        zero: "0 livre"
+        one: "1 livre"
+        other: "%{count} livres"
       view: "Voir"
       confirm_delete: "Supprimer ce groupe ?"
       empty: "Aucun groupe pour le moment."
+      empty_heading: "Aucun groupe pour le moment"
       create_first: "Créez votre premier groupe"
     new:
       title: "Nouveau Groupe"
+      subtitle: "Créez un nouveau groupe pour organiser vos livres"
     edit:
       title: "Modifier le Groupe"
+      subtitle: "Mettez à jour les détails de votre groupe"
+    form:
+      name_placeholder: "ex. Mes Favoris Fantasy"
+      description_placeholder: "Quels types de livres ajouterez-vous ici ?"
     show:
       add_book: "Ajouter un livre"
       confirm_delete: "Supprimer ce groupe ?"
       no_cover: "Pas de couverture"
       rating: "Note :"
       empty: "Aucun livre dans ce groupe pour le moment."
+      empty_heading: "Aucun livre pour le moment"
+      count_books:
+        zero: "0 livre"
+        one: "1 livre"
+        other: "%{count} livres"
+      stats:
+        reading:
+          one: "%{count} en cours"
+          other: "%{count} en cours"
+        finished:
+          one: "%{count} terminé"
+          other: "%{count} terminés"
+        tbr:
+          one: "%{count} PAL"
+          other: "%{count} PAL"
+        dnf:
+          one: "%{count} abandonné"
+          other: "%{count} abandonnés"
       add_first: "Ajoutez votre premier livre"
       search_placeholder: "Rechercher des livres..."
       all_statuses: "Tous les statuts"

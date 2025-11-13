@@ -14,10 +14,11 @@ RSpec.describe "Book management", type: :system do
 
   describe "Adding a book" do
     let(:book_arg) { build(:book, group: group, status: :reading) }
+
     it "allows user to add a new book to a group" do
       visit group_path(id: group)
 
-      click_on I18n.t("groups.show.add_book")
+      click_on I18n.t("groups.show.add_first")
       expect(page).to have_current_path(new_group_book_path(I18n.locale, group))
 
       fill_in "Title", with: book_arg.title

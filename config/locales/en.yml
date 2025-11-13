@@ -154,21 +154,51 @@ en:
   groups:
     index:
       title: "Your Groups"
+      subtitle: "Organize your books by genre, mood, or reading goals"
       new_group: "New Group"
+      count_books:
+        zero: "0 book"
+        one: "1 book"
+        other: "%{count} books"
       view: "View"
       confirm_delete: "Delete this group?"
       empty: "No groups yet."
+      empty_heading: "No groups yet"
       create_first: "Create your first group"
     new:
       title: "New Group"
+      subtitle: "Create a new group to organize your books"
     edit:
       title: "Edit Group"
+      subtitle: "Update your group details"
+    form:
+      name_placeholder: "e.g. Fantasy Favorites"
+      description_placeholder: "What kind of books will you add here?"
     show:
       add_book: "Add Book"
       confirm_delete: "Delete this group?"
       no_cover: "No cover"
       rating: "Rating:"
       empty: "No books in this group yet."
+      empty_heading: "No books yet"
+      book: "%{count} book"
+      count_books:
+        zero: "0 book"
+        one: "1 book"
+        other: "%{count} books"
+      stats:
+        reading:
+          one: "%{count} reading"
+          other: "%{count} reading"
+        finished:
+          one: "%{count} finished"
+          other: "%{count} finished"
+        tbr:
+          one: "%{count} TBR"
+          other: "%{count} TBR"
+        dnf:
+          one: "%{count} DNF"
+          other: "%{count} DNF"
       add_first: "Add your first book"
       search_placeholder: "Search books..."
       all_statuses: "All Statuses"

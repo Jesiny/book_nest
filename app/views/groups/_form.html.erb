@@ -1,8 +1,8 @@
-<%= form_with(model: group, class: "space-y-6") do |form| %>
+<%= form_with(model: group, class: "space-y-4") do |form| %>
   <% if group.errors.any? %>
-    <div class="rounded-md bg-red-50 p-4">
+    <div class="rounded-md bg-red-50 border border-red-200 p-4">
       <div class="text-sm text-red-700">
-        <ul class="list-disc list-inside">
+        <ul class="list-disc list-inside space-y-1">
           <% group.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
@@ -12,18 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :name, required: true, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    <%= form.label :name, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= form.text_field :name, required: true, 
+        class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent",
+        placeholder: t('.name_placeholder') %>
   </div>
 
   <div>
-    <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_area :description, rows: 4, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" %>
+    <%= form.label :description, class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= form.text_area :description, rows: 3,
+        class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none",
+        placeholder: t('.description_placeholder') %>
   </div>
 
-  <div class="flex items-center gap-3">
-    <%= form.submit t("common.save"), class: "inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700" %>
-    <%= link_to t("common.cancel"), (group.persisted? ? group_path(group) : groups_path), class: "text-gray-600 hover:text-gray-900" %>
+  <div class="flex space-x-3 pt-4">
+    <%= link_to (group.persisted? ? group_path(group) : groups_path), 
+        class: "flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium text-center hover:bg-gray-50 transition-colors" do %>
+      <%= t("common.cancel") %>
+    <% end %>
+    <%= form.submit t("common.save"), 
+        class: "flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-all hover:bg-indigo-700 hover:shadow-lg" %>
   </div>
 <% end %>
 
