@@ -18,7 +18,7 @@ RSpec.describe "Books", type: :request do
     it "returns http success" do
       get group_book_path(group_id: group, id: book)
       expect(response).to have_http_status(:success)
-      expect(response.body).to include("#{book.title}</h1>")
+      expect(response.body).to include("#{ERB::Util.html_escape(book.title)}</h1>")
     end
 
     it "prevents access to other user's book" do

@@ -215,7 +215,7 @@ en:
       title: "Edit Book"
     show:
       no_cover: "No cover"
-      no_resume: "No resume available."
+      no_resume: "No resume yet."
       no_review: "No review yet."
       help_write_review: "Help me write a review"
       talk_with_ai: "Talk with AI about this book"

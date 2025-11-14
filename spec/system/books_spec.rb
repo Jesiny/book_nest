@@ -41,7 +41,7 @@ RSpec.describe "Book management", type: :system do
       expect(page).to have_content(book_arg.resume)
       expect(page).to have_content(book_arg.review)
       expect(page).to have_content(I18n.t("activerecord.attributes.book.status_#{book_arg.status}"))
-      expect(page).to have_content(book_arg.rating)
+      expect(page).to have_content(book_arg.rating.to_s.sub(/\.0$/, ''))
       expect(Book.count).to eq(1)
       book = Book.last
       expect(book.group).to eq(group)
@@ -101,7 +101,7 @@ RSpec.describe "Book management", type: :system do
       expect(page).to have_content(book_arg.resume)
       expect(page).to have_content(book_arg.review)
       expect(page).to have_content(I18n.t("activerecord.attributes.book.status_#{book_arg.status}"))
-      expect(page).to have_content(book_arg.rating)
+      expect(page).to have_content(book_arg.rating.to_s.sub(/\.0$/, ''))
     end
 
     it "validates date_finished is after date_started" do

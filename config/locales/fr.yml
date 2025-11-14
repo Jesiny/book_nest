@@ -185,7 +185,7 @@ fr:
       title: "Modifier le livre"
     show:
       no_cover: "Pas de couverture"
-      no_resume: "Aucun résumé disponible."
+      no_resume: "Aucun résumé pour le moment."
       no_review: "Aucune critique pour le moment."
       help_write_review: "Aide-moi à écrire une critique"
       talk_with_ai: "Parler avec l'IA à propos de ce livre"
