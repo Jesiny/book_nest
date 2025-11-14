@@ -96,26 +96,26 @@ en:
     sessions:
       new:
         title: "Log in"
-        submit: "Log in"
         subtitle: "Welcome back to Book Nest"
+        sign_in_button: "Log in"
     registrations:
       new:
         title: "Sign up"
         subtitle: "Join Book Nest and start your reading journey"
         password_hint: "(%{count} characters minimum)"
-        submit: "Sign up"
+        sign_up_button: "Sign up"
       edit:
         title: "Edit %{resource}"
         subtitle: "Update your account information"
         waiting_confirmation: "Currently waiting confirmation for: %{email}"
         password_hint: "(leave blank if you don't want to change it)"
+        password_minimum: "(%{count} characters minimum)"
         current_password_hint: "(we need your current password to confirm your changes)"
         update: "Update"
         cancel_heading: "Cancel my account"
         unhappy: "Unhappy?"
         cancel_button: "Cancel my account"
         confirm: "Are you sure?"
-        back: "Back"
     passwords:
       new:
         title: "Forgot your password?"
@@ -124,6 +124,7 @@ en:
       edit:
         title: "Change your password"
         subtitle: "Enter your new password below"
+        password_hint: "(%{count} characters minimum)"
         submit: "Change my password"
     confirmations:
       new:
@@ -142,6 +143,7 @@ en:
         forgot_password: "Forgot your password?"
         no_confirmation: "Didn't receive confirmation instructions?"
         no_unlock: "Didn't receive unlock instructions?"
+        or_continue_with: "Or continue with"
         omniauth: "Sign in with %{provider}"
   common:
     save: "Save"
