@@ -1,49 +1,50 @@
-<nav class="sticky z-50 w-full bg-white border-b border-gray-200">
-  <div class="py-3 px-3 lg:px-5 lg:pl-3">
-    <div class="flex justify-between items-center">
+<nav class="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
       <div class="flex justify-start items-center">
-        <%= link_to dynamic_root_path, class: "flex items-center space-x-3" do %>
-          <%= image_tag "logo.png", class: 'h-8', alt: 'Logo' %>
+        <%= link_to dynamic_root_path, class: "flex items-center space-x-3 hover:opacity-80 transition-opacity" do %>
+          <%= image_tag "logo.png", class: 'h-8', alt: t('.logo_alt') %>
         <% end %>
       </div>
-      <div class="flex items-center">
-        <div class="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-white/20 px-3 py-2 mr-4">
-          <div class="flex space-x-2">
-            <%= link_to "EN", { locale: :en }, class: "text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 #{'text-blue-600 font-semibold' if I18n.locale == :en}" %>
+      <div class="flex items-center gap-4">
+        <div class="bg-gray-50 rounded-lg border border-gray-200 px-3 py-1.5">
+          <div class="flex items-center space-x-2">
+            <%= link_to "EN", { locale: :en }, class: "text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors #{'text-indigo-600 font-semibold' if I18n.locale == :en}" %>
             <span class="text-gray-300">|</span>
-            <%= link_to "FR", { locale: :fr }, class: "text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors duration-200 #{'text-blue-600 font-semibold' if I18n.locale == :fr}" %>
+            <%= link_to "FR", { locale: :fr }, class: "text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors #{'text-indigo-600 font-semibold' if I18n.locale == :fr}" %>
           </div>
         </div>
         
-        <div class="flex items-center ml-3 gap-4">
+        <div class="flex items-center gap-3">
           <% if user_signed_in? %>
-            <div>
-              <button type="button" class="flex text-sm" id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="user-dropdown">
+            <div class="relative">
+              <button type="button" class="flex text-sm rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown">
                 <span class="sr-only"><%= t('.open_user_menu') %></span>
-                <!-- TODO add profile picture%> -->
-                <%#= image_tag current_user.avatar.attached? ? current_user.avatar : 'placeholder_profile_avatar.jpg', class: "me_avatar_profile w-8 h-8 rounded-lg object-cover overflow-hidden transform hover:scale-105 hover:border-2 hover:border-gray-400 transition-transform duration-1000" %>
-                
-                <%= image_tag 'placeholder_profile_avatar.jpg', class: "me_avatar_profile w-8 h-8 rounded-lg object-cover overflow-hidden transform hover:scale-105 hover:border-2 hover:border-gray-400 transition-transform duration-1000" %>
-
+                <%= image_tag 'placeholder_profile_avatar.jpg', class: "w-8 h-8 rounded-lg object-cover border-2 border-gray-200 hover:border-indigo-300 transition-colors" %>
               </button>
-            </div>
-            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
-              <div class="px-4 py-3">
-                <span class="block text-sm text-gray-900"><%= current_user.username %></span>
-                <span class="block text-sm text-gray-500 truncate"><%= current_user.email %></span>
+              <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-lg border border-gray-200 w-56" id="user-dropdown">
+                <div class="px-4 py-3">
+                  <span class="block text-sm font-medium text-gray-900"><%= current_user.username %></span>
+                  <span class="block text-sm text-gray-500 truncate"><%= current_user.email %></span>
+                </div>
+                <ul class="py-2" aria-labelledby="user-menu-button">
+                  <!-- TODO: add profile link later
+                  <li>
+                    <#%= link_to t('.profile'), profile_path(id: 'me'), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+                  </li> -->
+                  <li>
+                    <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('.confirm_sign_out') }, class: "flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors" do %>
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                      </svg>
+                      <%= t('.sign_out') %>
+                    <% end %>
+                  </li>
+                </ul>
               </div>
-              <ul class="py-2" aria-labelledby="user-menu-button">
-                <!-- TODO: add profile link later
-                <li>
-                  <#%= link_to t('.profile'), profile_path(id: 'me'), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-                </li> -->
-                <li>
-                  <%= link_to t('.sign_out'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('.confirm_sign_out') }, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-                </li>
-              </ul>
             </div>
           <% else %>
-            <%= link_to t('.sign_in'), new_user_session_path, class: "hidden py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 md:inline-block focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200" %>
+            <%= link_to t('.sign_in'), new_user_session_path, class: "inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" %>
           <% end %>
         </div>
       </div>

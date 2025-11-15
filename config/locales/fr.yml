@@ -283,6 +283,9 @@ fr:
         sign_out: "Se déconnecter"
         sign_in: "Se connecter"
         confirm_sign_out: "Êtes-vous sûr ?"
+        logo_alt: "Logo Book Nest"
+    flash:
+      close: "Fermer"
   date:
     formats:
       default: "%d %B %Y" # 24 octobre 2025
