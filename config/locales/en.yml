@@ -236,15 +236,27 @@ en:
   chats:
     index:
       title: "Chats"
+      subtitle: "Your AI conversations about books"
       show_chat: "Show this chat"
       new_chat: "New chat"
+      empty_heading: "No chats yet"
+      empty: "You haven't started any conversations yet."
+      create_first: "Start your first chat"
     new:
       title: "New chat"
+      subtitle: "Start a new conversation with AI"
     show:
       using_model: "Using"
       title: "%{title}: AI chat"
       no_messages: "No messages yet"
       start_conversation: "Start a conversation by sending your first message below."
+    _chat:
+      message_count:
+        zero: "0 messages"
+        one: "1 message"
+        other: "%{count} messages"
+      created_at: "Created %{date}"
+      view_chat: "View chat"
     form:
       select_model: "Select AI model:"
       default_model: "Default (%{model})"

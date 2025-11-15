@@ -1,29 +1,38 @@
-<%= form_with(model: chat, url: chats_path) do |form| %>
+<%= form_with(model: chat, url: chats_path, class: "space-y-4") do |form| %>
   <% if chat.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
-
-      <ul>
-        <% chat.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="rounded-md bg-red-50 border border-red-200 p-4">
+      <div class="text-sm text-red-700">
+        <ul class="list-disc list-inside space-y-1">
+          <% chat.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
   <div>
-    <%= form.label :model, t('.select_model'), style: "display: block" %>
+    <%= form.label :model, t('.select_model'), class: "block text-sm font-medium text-gray-700 mb-2" %>
     <%= form.select :model,
         options_for_select(Model.pluck(:name, :model_id).unshift([t('.default_model', model: RubyLLM.config.default_model), nil]), @selected_model),
         {},
-        style: "width: 100%; max-width: 600px; padding: 5px;" %>
-  </div>
-
-  <div style="margin-top: 15px;">
-    <%= form.text_field :prompt, style: "width: 100%; max-width: 600px;", placeholder: t('.prompt_placeholder'), autofocus: true %>
+        class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" %>
   </div>
 
   <div>
-    <%= form.submit t('.start_chat') %>
+    <%= form.label :prompt, t('activerecord.attributes.chat.prompt'), class: "block text-sm font-medium text-gray-700 mb-2" %>
+    <%= form.text_field :prompt, 
+        placeholder: t('.prompt_placeholder'), 
+        autofocus: true,
+        class: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" %>
+  </div>
+
+  <div class="flex space-x-3 pt-4">
+    <%= link_to chats_path, 
+        class: "flex-1 px-4 py-2 border border-gray-300 rounded-lg font-medium text-center hover:bg-gray-50 transition-colors" do %>
+      <%= t("common.cancel") %>
+    <% end %>
+    <%= form.submit t('.start_chat'), 
+        class: "flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium transition-all hover:bg-indigo-700 hover:shadow-lg" %>
   </div>
 <% end %>

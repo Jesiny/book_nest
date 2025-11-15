@@ -23,18 +23,18 @@
     </div>
   <% end %>
 
-  <div class="flex space-x-3">
+  <div class="flex gap-3">
     <div class="flex-1">
       <%= form.text_area :content, 
           placeholder: t('.message_placeholder'), 
           autofocus: true,
           rows: 3,
-          class: "block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+          class: "block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none transition-colors"
       %>
     </div>
-    <div class="flex-shrink-0">
+    <div class="flex-shrink-0 self-end">
       <%= form.submit t('.send_message'), 
-          class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed",
+          class: "inline-flex items-center gap-2 px-6 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:shadow-lg",
           data: { 
             disable_with: t('.sending'),
             turbo_submits_with: t('.sending')

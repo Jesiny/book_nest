@@ -207,15 +207,27 @@ fr:
   chats:
     index:
       title: "Chats"
+      subtitle: "Vos conversations IA sur les livres"
       show_chat: "Voir ce chat"
       new_chat: "Nouveau chat"
+      empty_heading: "Aucun chat pour le moment"
+      empty: "Vous n'avez pas encore commencé de conversation."
+      create_first: "Commencer votre premier chat"
     new:
       title: "Nouveau chat"
+      subtitle: "Commencer une nouvelle conversation avec l'IA"
     show:
       using_model: "Utilisation de"
       title: "%{title} : Chat IA"
       no_messages: "Aucun message pour le moment"
       start_conversation: "Commencez une conversation en envoyant votre premier message ci-dessous."
+    _chat:
+      message_count:
+        zero: "0 messages"
+        one: "1 message"
+        other: "%{count} messages"
+      created_at: "Créé le %{date}"
+      view_chat: "Voir le chat"
     form:
       select_model: "Sélectionner le modèle IA :"
       default_model: "Par défaut (%{model})"

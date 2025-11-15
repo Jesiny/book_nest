@@ -83,6 +83,7 @@ RSpec.describe "Group management", type: :system do
   describe "Deleting a group" do
     let!(:group) { create(:group, user: user) }
 
+    # TODO error
     it "allows user to delete group" do
       visit groups_path
 

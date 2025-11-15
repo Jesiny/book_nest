@@ -2,47 +2,52 @@
 
 <% content_for :title, t('.title', title: @book.title) %>
 
-<div class="max-w-4xl mx-auto px-4 py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
   <!-- Header Section -->
-  <div class="mb-8">
-    <div class="flex items-center justify-between">
-      <div>
-        <h1 class="text-3xl font-bold text-gray-900"><%= t('.title', title: @book.title) %></h1>
-        <p class="mt-2 text-lg text-gray-600">
+  <header class="mb-8">
+    <div class="flex items-start justify-between">
+      <div class="flex-1">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2"><%= t('.title', title: @book.title) %></h1>
+        <p class="text-lg text-gray-600">
           <%= t('.using_model') %> 
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
             <%= @chat.model.name %>
           </span>
         </p>
       </div>
       <div class="flex items-center gap-3">
-        <%= link_to t("common.back"), group_book_path(@group, @book), 
-            class: "inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+        <%= link_to group_book_path(@group, @book), 
+            class: "inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors" do %>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          <%= t("common.back") %>
+        <% end %>
       </div>
     </div>
-  </div>
+  </header>
 
   <!-- Messages Container -->
-  <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-6">
-    <div id="messages" class="p-6 space-y-4 max-h-96 overflow-y-auto">
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6 overflow-hidden">
+    <div id="messages" class="h-[600px] overflow-y-auto p-6 space-y-6">
       <% if @chat.messages.where.not(id: nil).any? %>
         <% @chat.messages.where.not(id: nil).each do |message| %>
           <%= render message %>
         <% end %>
       <% else %>
-        <div class="text-center py-8 text-gray-500">
-          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="flex flex-col items-center justify-center h-full text-center py-12">
+          <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
-          <h3 class="mt-2 text-sm font-medium text-gray-900"><%= t('.no_messages') %></h3>
-          <p class="mt-1 text-sm text-gray-500"><%= t('.start_conversation') %></p>
+          <h3 class="text-lg font-medium text-gray-900 mb-2"><%= t('.no_messages') %></h3>
+          <p class="text-sm text-gray-500"><%= t('.start_conversation') %></p>
         </div>
       <% end %>
     </div>
   </div>
 
   <!-- Message Form -->
-  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
     <%= render "messages/form", chat: @chat, message: @message %>
   </div>
 </div>
