@@ -14,7 +14,7 @@ RSpec.describe "Group management", type: :system do
       it "allows user to create a new group" do
         visit groups_path
 
-        click_on I18n.t("groups.index.new_group")
+        click_on I18n.t("groups.index.create_first")
         expect(page).to have_current_path(new_group_path(locale: I18n.locale))
 
         fill_in "Name", with: group.name
@@ -83,15 +83,17 @@ RSpec.describe "Group management", type: :system do
   describe "Deleting a group" do
     let!(:group) { create(:group, user: user) }
 
+    # TODO error
     it "allows user to delete group" do
       visit groups_path
 
-      expect(page).to have_content("Delete")
+      expect(page).to have_content(group.name)
 
-      click_on I18n.t("common.delete")
-      page.accept_alert if page.driver.browser.respond_to?(:switch_to)
+      accept_confirm do
+        find("a[title='#{I18n.t('common.delete')}']").click
+      end
 
-      expect(page).not_to have_content("Delete")
+      expect(page).not_to have_content(group.name)
       expect(Group.count).to eq(0)
     end
   end

@@ -96,26 +96,26 @@ en:
     sessions:
       new:
         title: "Log in"
-        submit: "Log in"
         subtitle: "Welcome back to Book Nest"
+        sign_in_button: "Log in"
     registrations:
       new:
         title: "Sign up"
         subtitle: "Join Book Nest and start your reading journey"
         password_hint: "(%{count} characters minimum)"
-        submit: "Sign up"
+        sign_up_button: "Sign up"
       edit:
         title: "Edit %{resource}"
         subtitle: "Update your account information"
         waiting_confirmation: "Currently waiting confirmation for: %{email}"
         password_hint: "(leave blank if you don't want to change it)"
+        password_minimum: "(%{count} characters minimum)"
         current_password_hint: "(we need your current password to confirm your changes)"
         update: "Update"
         cancel_heading: "Cancel my account"
         unhappy: "Unhappy?"
         cancel_button: "Cancel my account"
         confirm: "Are you sure?"
-        back: "Back"
     passwords:
       new:
         title: "Forgot your password?"
@@ -124,6 +124,7 @@ en:
       edit:
         title: "Change your password"
         subtitle: "Enter your new password below"
+        password_hint: "(%{count} characters minimum)"
         submit: "Change my password"
     confirmations:
       new:
@@ -142,6 +143,7 @@ en:
         forgot_password: "Forgot your password?"
         no_confirmation: "Didn't receive confirmation instructions?"
         no_unlock: "Didn't receive unlock instructions?"
+        or_continue_with: "Or continue with"
         omniauth: "Sign in with %{provider}"
   common:
     save: "Save"
@@ -154,21 +156,51 @@ en:
   groups:
     index:
       title: "Your Groups"
+      subtitle: "Organize your books by genre, mood, or reading goals"
       new_group: "New Group"
+      count_books:
+        zero: "0 book"
+        one: "1 book"
+        other: "%{count} books"
       view: "View"
       confirm_delete: "Delete this group?"
       empty: "No groups yet."
+      empty_heading: "No groups yet"
       create_first: "Create your first group"
     new:
       title: "New Group"
+      subtitle: "Create a new group to organize your books"
     edit:
       title: "Edit Group"
+      subtitle: "Update your group details"
+    form:
+      name_placeholder: "e.g. Fantasy Favorites"
+      description_placeholder: "What kind of books will you add here?"
     show:
       add_book: "Add Book"
       confirm_delete: "Delete this group?"
       no_cover: "No cover"
       rating: "Rating:"
       empty: "No books in this group yet."
+      empty_heading: "No books yet"
+      book: "%{count} book"
+      count_books:
+        zero: "0 book"
+        one: "1 book"
+        other: "%{count} books"
+      stats:
+        reading:
+          one: "%{count} reading"
+          other: "%{count} reading"
+        finished:
+          one: "%{count} finished"
+          other: "%{count} finished"
+        tbr:
+          one: "%{count} TBR"
+          other: "%{count} TBR"
+        dnf:
+          one: "%{count} DNF"
+          other: "%{count} DNF"
       add_first: "Add your first book"
       search_placeholder: "Search books..."
       all_statuses: "All Statuses"
@@ -185,7 +217,7 @@ en:
       title: "Edit Book"
     show:
       no_cover: "No cover"
-      no_resume: "No resume available."
+      no_resume: "No resume yet."
       no_review: "No review yet."
       help_write_review: "Help me write a review"
       talk_with_ai: "Talk with AI about this book"
@@ -204,15 +236,27 @@ en:
   chats:
     index:
       title: "Chats"
+      subtitle: "Your AI conversations about books"
       show_chat: "Show this chat"
       new_chat: "New chat"
+      empty_heading: "No chats yet"
+      empty: "You haven't started any conversations yet."
+      create_first: "Start your first chat"
     new:
       title: "New chat"
+      subtitle: "Start a new conversation with AI"
     show:
       using_model: "Using"
       title: "%{title}: AI chat"
       no_messages: "No messages yet"
       start_conversation: "Start a conversation by sending your first message below."
+    _chat:
+      message_count:
+        zero: "0 messages"
+        one: "1 message"
+        other: "%{count} messages"
+      created_at: "Created %{date}"
+      view_chat: "View chat"
     form:
       select_model: "Select AI model:"
       default_model: "Default (%{model})"
@@ -268,6 +312,9 @@ en:
         sign_out: "Sign out"
         sign_in: "Sign in"
         confirm_sign_out: "Are you sure?"
+        logo_alt: "Book Nest Logo"
+    flash:
+      close: "Close"
   date:
     formats:
       default: "%B %d, %Y" # October 24, 2025

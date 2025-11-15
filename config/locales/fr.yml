@@ -56,6 +56,7 @@ fr:
               blank: "ne peut pas être vide"
               taken: "a déjà été pris"
             password:
+              blank: "ne peut pas être vide"
               too_short: "est trop court (le minimum est de %{count} caractères)"
             password_confirmation:
               confirmation: "ne correspond pas au mot de passe"
@@ -68,25 +69,25 @@ fr:
       new:
         title: "Se connecter"
         subtitle: "Bon retour sur Book Nest"
-        submit: "Se connecter"
+        sign_in_button: "Se connecter"
     registrations:
       new:
         title: "S'inscrire"
         subtitle: "Rejoignez Book Nest et commencez votre voyage de lecture"
         password_hint: "(%{count} caractères minimum)"
-        submit: "S'inscrire"
+        sign_up_button: "S'inscrire"
       edit:
         title: "Modifier %{resource}"
         subtitle: "Mettez à jour vos informations de compte"
         waiting_confirmation: "En attente de confirmation pour : %{email}"
         password_hint: "(laissez vide si vous ne souhaitez pas le changer)"
+        password_minimum: "(%{count} caractères minimum)"
         current_password_hint: "(nous avons besoin de votre mot de passe actuel pour confirmer vos changements)"
         update: "Mettre à jour"
         cancel_heading: "Supprimer mon compte"
         unhappy: "Pas satisfait ?"
         cancel_button: "Supprimer mon compte"
         confirm: "Êtes-vous sûr ?"
-        back: "Retour"
     passwords:
       new:
         title: "Mot de passe oublié ?"
@@ -95,6 +96,7 @@ fr:
       edit:
         title: "Changer votre mot de passe"
         subtitle: "Entrez votre nouveau mot de passe ci-dessous"
+        password_hint: "(%{count} caractères minimum)"
         submit: "Changer mon mot de passe"
     confirmations:
       new:
@@ -113,6 +115,7 @@ fr:
         forgot_password: "Mot de passe oublié ?"
         no_confirmation: "Vous n'avez pas reçu les instructions de confirmation ?"
         no_unlock: "Vous n'avez pas reçu les instructions de déverrouillage ?"
+        or_continue_with: "Ou continuer avec"
         omniauth: "Se connecter avec %{provider}"
   common:
     save: "Enregistrer"
@@ -125,21 +128,49 @@ fr:
   groups:
     index:
       title: "Vos Groupes"
+      subtitle: "Organisez vos livres par genre, humeur ou objectifs de lecture"
       new_group: "Nouveau Groupe"
-      view: "Voir"
+      count_books:
+        zero: "0 livre"
+        one: "1 livre"
+        other: "%{count} livres"
       confirm_delete: "Supprimer ce groupe ?"
       empty: "Aucun groupe pour le moment."
+      empty_heading: "Aucun groupe pour le moment"
       create_first: "Créez votre premier groupe"
     new:
       title: "Nouveau Groupe"
+      subtitle: "Créez un nouveau groupe pour organiser vos livres"
     edit:
       title: "Modifier le Groupe"
+      subtitle: "Mettez à jour les détails de votre groupe"
+    form:
+      name_placeholder: "ex. Mes Favoris Fantasy"
+      description_placeholder: "Quels types de livres ajouterez-vous ici ?"
     show:
       add_book: "Ajouter un livre"
       confirm_delete: "Supprimer ce groupe ?"
       no_cover: "Pas de couverture"
       rating: "Note :"
       empty: "Aucun livre dans ce groupe pour le moment."
+      empty_heading: "Aucun livre pour le moment"
+      count_books:
+        zero: "0 livre"
+        one: "1 livre"
+        other: "%{count} livres"
+      stats:
+        reading:
+          one: "%{count} en cours"
+          other: "%{count} en cours"
+        finished:
+          one: "%{count} terminé"
+          other: "%{count} terminés"
+        tbr:
+          one: "%{count} PAL"
+          other: "%{count} PAL"
+        dnf:
+          one: "%{count} abandonné"
+          other: "%{count} abandonnés"
       add_first: "Ajoutez votre premier livre"
       search_placeholder: "Rechercher des livres..."
       all_statuses: "Tous les statuts"
@@ -156,7 +187,7 @@ fr:
       title: "Modifier le livre"
     show:
       no_cover: "Pas de couverture"
-      no_resume: "Aucun résumé disponible."
+      no_resume: "Aucun résumé pour le moment."
       no_review: "Aucune critique pour le moment."
       help_write_review: "Aide-moi à écrire une critique"
       talk_with_ai: "Parler avec l'IA à propos de ce livre"
@@ -175,15 +206,27 @@ fr:
   chats:
     index:
       title: "Chats"
+      subtitle: "Vos conversations IA sur les livres"
       show_chat: "Voir ce chat"
       new_chat: "Nouveau chat"
+      empty_heading: "Aucun chat pour le moment"
+      empty: "Vous n'avez pas encore commencé de conversation."
+      create_first: "Commencer votre premier chat"
     new:
       title: "Nouveau chat"
+      subtitle: "Commencer une nouvelle conversation avec l'IA"
     show:
       using_model: "Utilisation de"
       title: "%{title} : Chat IA"
       no_messages: "Aucun message pour le moment"
       start_conversation: "Commencez une conversation en envoyant votre premier message ci-dessous."
+    _chat:
+      message_count:
+        zero: "0 messages"
+        one: "1 message"
+        other: "%{count} messages"
+      created_at: "Créé le %{date}"
+      view_chat: "Voir le chat"
     form:
       select_model: "Sélectionner le modèle IA :"
       default_model: "Par défaut (%{model})"
@@ -239,6 +282,9 @@ fr:
         sign_out: "Se déconnecter"
         sign_in: "Se connecter"
         confirm_sign_out: "Êtes-vous sûr ?"
+        logo_alt: "Logo Book Nest"
+    flash:
+      close: "Fermer"
   date:
     formats:
       default: "%d %B %Y" # 24 octobre 2025
