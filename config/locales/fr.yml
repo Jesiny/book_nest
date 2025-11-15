@@ -134,7 +134,6 @@ fr:
         zero: "0 livre"
         one: "1 livre"
         other: "%{count} livres"
-      view: "Voir"
       confirm_delete: "Supprimer ce groupe ?"
       empty: "Aucun groupe pour le moment."
       empty_heading: "Aucun groupe pour le moment"
