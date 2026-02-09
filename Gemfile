@@ -76,7 +76,7 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails", "~> 1.3"
