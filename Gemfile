@@ -49,7 +49,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # https://github.com/rspec/rspec-rails/tree/8-0-maintenance
-  gem "rspec-rails", "~> 8.0.3"
+  gem "rspec-rails", "~> 8.0.4"
 
   # https://github.com/thoughtbot/factory_bot_rails
   gem "factory_bot_rails"
