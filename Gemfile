@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.2"
+gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
@@ -86,4 +86,4 @@ gem "cssbundling-rails", "~> 1.4"
 gem "image_processing", "~> 1.14"
 
 # Build chatbots, AI agents, RAG applications https://github.com/crmne/ruby_llm
-gem "ruby_llm", "~> 1.13"
+gem "ruby_llm", "~> 1.14"
